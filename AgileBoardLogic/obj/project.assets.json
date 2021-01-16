@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nieza\\source\\repos\\AgileBoard\\AgileBoard\\AgileBoard.csproj",
-      "projectName": "AgileBoard",
-      "projectPath": "C:\\Users\\nieza\\source\\repos\\AgileBoard\\AgileBoard\\AgileBoard.csproj",
+      "projectUniqueName": "C:\\Users\\nieza\\source\\repos\\AgileBoard\\AgileBoardLogic\\AgileBoardLogic.csproj",
+      "projectName": "AgileBoardLogic",
+      "projectPath": "C:\\Users\\nieza\\source\\repos\\AgileBoard\\AgileBoardLogic\\AgileBoardLogic.csproj",
       "packagesPath": "C:\\Users\\nieza\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nieza\\source\\repos\\AgileBoard\\AgileBoard\\obj\\",
+      "outputPath": "C:\\Users\\nieza\\source\\repos\\AgileBoard\\AgileBoardLogic\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nieza\\AppData\\Roaming\\NuGet\\NuGet.Config",

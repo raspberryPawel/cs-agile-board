@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AgileBoard
+namespace AgileBoardLogic
 {
     class Program
     {
