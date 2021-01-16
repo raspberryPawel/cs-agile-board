@@ -1,26 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using AgileBoardLogic;
 
 namespace AgileBoardView
 {
-    /// <summary>
-    /// Logika interakcji dla klasy MainBoardPage.xaml
-    /// </summary>
     public partial class MainBoardPage : Page
     {
         public MainBoardPage()
         {
             InitializeComponent();
+
+            Board.OpenTasksRef = OpenTasks;
+            Board.CodingTasksRef = CodingTasks;
+            Board.TestsTasksRef = TestTasks;
+            Board.ResolveTasksRef = ResolveTasks;
+            
+            Board.AddNewTaskToBoard(new Task());
+            Board.CodingTasksList.Add(new Task());
+            Board.TestsTasksList.Add(new Task());
+            Board.ResolveTasksList.Add(new Task());
+            Board.SetListContexts();
         }
+
+        private void OpenMouseDown(object sender, RoutedEventArgs e) => Board.DeselectLists(open: false);
+        private void CodingMouseDown(object sender, RoutedEventArgs e) => Board.DeselectLists(coding: false);
+        private void TestsMouseDown(object sender, RoutedEventArgs e) => Board.DeselectLists(test: false);
+        private void ResolveMouseDown(object sender, RoutedEventArgs e) => Board.DeselectLists(resolve: false);
+        private void DeselectAll() => Board.DeselectLists();
     }
 }

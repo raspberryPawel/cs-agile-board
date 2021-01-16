@@ -23,7 +23,236 @@
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0">
             <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Margin="0,0,0,40" RenderTransformOrigin="0.546,0.524">
-                <TextBox>ZADANIA</TextBox>
+                <Grid ShowGridLines="False" Height="400">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="270"></ColumnDefinition>
+                        <ColumnDefinition Width="270"></ColumnDefinition>
+                        <ColumnDefinition Width="270"></ColumnDefinition>
+                        <ColumnDefinition Width="270"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Label Content="Open" Margin="5,4,130,5" FontSize="18" FontFamily="Calibri Light" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Label Content="Coding" Margin="5,4,5,5" FontSize="18" FontFamily="Calibri Light" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="2">
+                        <Label Content="Test" Margin="5,4,5,5" FontSize="18" FontFamily="Calibri Light" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="3">
+                        <Label Content="Resolve" Margin="5,4,5,5" FontSize="18" FontFamily="Calibri Light" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="0" Margin="0,0,0,0">
+                        <ListBox MouseDown="OpenMouseDown" x:Name="OpenTasks" ItemsSource="{Binding}" HorizontalAlignment="Center" Height="350" Margin="0,0,0,0" VerticalAlignment="Top" Width="270">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Width="235" MouseDown="OpenMouseDown">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="135"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0" Grid.Column="0">
+                                            <TextBlock Text="Nazwa zadania:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="0" Grid.Column="1">
+                                            <TextBlock Text="{Binding Name}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="1" Grid.Column="0">
+                                            <TextBlock Text="Estymata:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="1" Grid.Column="1">
+                                            <TextBlock Text="{Binding Estimation}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="2" Grid.Column="0">
+                                            <TextBlock Text="Data dodania:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="2" Grid.Column="1">
+                                            <TextBlock Text="{Binding AddToBoardDate}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="3" Grid.Column="0">
+                                            <TextBlock Text="Data zakończenia:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="3" Grid.Column="1">
+                                            <TextBlock Text="{Binding TaskEndDate}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="4" Grid.Column="0">
+                                            <TextBlock Text="Modyfikacja:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="4" Grid.Column="1">
+                                            <TextBlock Text="{Binding LastModifyDate}" Margin="2" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1" Margin="0,0,0,0">
+                        <ListBox MouseDown="CodingMouseDown" x:Name="CodingTasks" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="350" Margin="0,0,0,0" VerticalAlignment="Top" Width="270">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Width="235" MouseDown="CodingMouseDown">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="135"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0" Grid.Column="0">
+                                            <TextBlock Text="Nazwa zadania:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="0" Grid.Column="1">
+                                            <TextBlock Text="{Binding Name}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="1" Grid.Column="0">
+                                            <TextBlock Text="Estymata:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="1" Grid.Column="1">
+                                            <TextBlock Text="{Binding Estimation}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="2" Grid.Column="0">
+                                            <TextBlock Text="Data dodania:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="2" Grid.Column="1">
+                                            <TextBlock Text="{Binding AddToBoardDate}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="3" Grid.Column="0">
+                                            <TextBlock Text="Data zakończenia:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="3" Grid.Column="1">
+                                            <TextBlock Text="{Binding TaskEndDate}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="4" Grid.Column="0">
+                                            <TextBlock Text="Modyfikacja:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="4" Grid.Column="1">
+                                            <TextBlock Text="{Binding LastModifyDate}" Margin="2" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="2" Margin="0,0,0,0">
+                        <ListBox MouseDown="TestsMouseDown" x:Name="TestTasks" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="350" Margin="0,0,0,0" VerticalAlignment="Top" Width="270">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Width="235" MouseDown="TestsMouseDown">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="135"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0" Grid.Column="0">
+                                            <TextBlock Text="Nazwa zadania:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="0" Grid.Column="1">
+                                            <TextBlock Text="{Binding Name}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="1" Grid.Column="0">
+                                            <TextBlock Text="Estymata:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="1" Grid.Column="1">
+                                            <TextBlock Text="{Binding Estimation}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="2" Grid.Column="0">
+                                            <TextBlock Text="Data dodania:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="2" Grid.Column="1">
+                                            <TextBlock Text="{Binding AddToBoardDate}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="3" Grid.Column="0">
+                                            <TextBlock Text="Data zakończenia:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="3" Grid.Column="1">
+                                            <TextBlock Text="{Binding TaskEndDate}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="4" Grid.Column="0">
+                                            <TextBlock Text="Modyfikacja:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="4" Grid.Column="1">
+                                            <TextBlock Text="{Binding LastModifyDate}" Margin="2" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="3" Margin="0,0,0,0">
+                        <ListBox MouseDown="ResolveMouseDown" x:Name="ResolveTasks" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="350" Margin="0,0,0,0" VerticalAlignment="Top" Width="270">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Width="235" MouseDown="ResolveMouseDown">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="135"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0" Grid.Column="0">
+                                            <TextBlock Text="Nazwa zadania:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="0" Grid.Column="1">
+                                            <TextBlock Text="{Binding Name}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="1" Grid.Column="0">
+                                            <TextBlock Text="Estymata:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="1" Grid.Column="1">
+                                            <TextBlock Text="{Binding Estimation}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="2" Grid.Column="0">
+                                            <TextBlock Text="Data dodania:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="2" Grid.Column="1">
+                                            <TextBlock Text="{Binding AddToBoardDate}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="3" Grid.Column="0">
+                                            <TextBlock Text="Data zakończenia:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="3" Grid.Column="1">
+                                            <TextBlock Text="{Binding TaskEndDate}" Margin="2" />
+                                        </Grid>
+                                        <Grid Grid.Row="4" Grid.Column="0">
+                                            <TextBlock Text="Modyfikacja:" Height="19" />
+                                        </Grid>
+                                        <Grid Grid.Row="4" Grid.Column="1">
+                                            <TextBlock Text="{Binding LastModifyDate}" Margin="2" />
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </Grid>
             </ScrollViewer>
         </Grid>
     </Grid>

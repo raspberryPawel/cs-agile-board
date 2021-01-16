@@ -2,9 +2,9 @@
 
 namespace AgileBoardLogic
 {
-    class BoardConst
+    public enum BoardColumns { Open, Coding, Test, Resolve, Any };
+    public class BoardConst
     {
-        public enum BoardColumns { Open, Coding, Test, Resolve };
         public static Dictionary<BoardColumns, string> BoardColumnsNames = new Dictionary<BoardColumns, string>()
         {
             [BoardColumns.Open] = "Open",
