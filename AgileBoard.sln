@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgileBoard", "AgileBoard\AgileBoard.csproj", "{AE2B1BAA-5DF3-4DCC-9AA6-740A2CD4EDDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE2B1BAA-5DF3-4DCC-9AA6-740A2CD4EDDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE2B1BAA-5DF3-4DCC-9AA6-740A2CD4EDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE2B1BAA-5DF3-4DCC-9AA6-740A2CD4EDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE2B1BAA-5DF3-4DCC-9AA6-740A2CD4EDDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC1E7B56-2F8F-4CAD-B287-2FAD77AED88F}
+	EndGlobalSection
+EndGlobal
