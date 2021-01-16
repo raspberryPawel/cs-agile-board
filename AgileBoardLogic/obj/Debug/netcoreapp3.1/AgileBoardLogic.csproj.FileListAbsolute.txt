@@ -1,0 +1,13 @@
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardLogic\bin\Debug\netcoreapp3.1\AgileBoardLogic.exe
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardLogic\bin\Debug\netcoreapp3.1\AgileBoardLogic.deps.json
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardLogic\bin\Debug\netcoreapp3.1\AgileBoardLogic.runtimeconfig.json
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardLogic\bin\Debug\netcoreapp3.1\AgileBoardLogic.runtimeconfig.dev.json
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardLogic\bin\Debug\netcoreapp3.1\AgileBoardLogic.dll
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardLogic\bin\Debug\netcoreapp3.1\AgileBoardLogic.pdb
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardLogic\obj\Debug\netcoreapp3.1\AgileBoardLogic.csprojAssemblyReference.cache
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardLogic\obj\Debug\netcoreapp3.1\AgileBoardLogic.AssemblyInfoInputs.cache
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardLogic\obj\Debug\netcoreapp3.1\AgileBoardLogic.AssemblyInfo.cs
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardLogic\obj\Debug\netcoreapp3.1\AgileBoardLogic.csproj.CoreCompileInputs.cache
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardLogic\obj\Debug\netcoreapp3.1\AgileBoardLogic.dll
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardLogic\obj\Debug\netcoreapp3.1\AgileBoardLogic.pdb
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardLogic\obj\Debug\netcoreapp3.1\AgileBoardLogic.genruntimeconfig.cache

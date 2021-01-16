@@ -1,5 +1,5 @@
 ﻿AgileBoardView
-1.0.0.0
+
 
 winexe
 C#
@@ -12,7 +12,7 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\App.xaml
 2-1287961122
 
-6-709638157
+4-1520838954
 193-191290616
 MainBoardPage.xaml;MainWindow.xaml;
 
