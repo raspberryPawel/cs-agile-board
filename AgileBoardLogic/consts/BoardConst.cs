@@ -12,5 +12,13 @@ namespace AgileBoardLogic
             [BoardColumns.Test] = "Test",
             [BoardColumns.Resolve] = "Resolve",
         };
+
+        public static Dictionary<Estimate, string> BoardEstimation = new Dictionary<Estimate, string>()
+        {
+            [Estimate.Low] = "Low",
+            [Estimate.Medium] = "Medium",
+            [Estimate.High] = "High",
+            [Estimate.Critical] = "Critical",
+        };
     }
 }

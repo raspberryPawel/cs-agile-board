@@ -23,3 +23,5 @@ C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\netcoreapp3.1\Ag
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\netcoreapp3.1\AgileBoardView.dll
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\netcoreapp3.1\AgileBoardView.pdb
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\netcoreapp3.1\AgileBoardView.genruntimeconfig.cache
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\netcoreapp3.1\AddNewCardPage.g.cs
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\netcoreapp3.1\AddNewCardPage.baml

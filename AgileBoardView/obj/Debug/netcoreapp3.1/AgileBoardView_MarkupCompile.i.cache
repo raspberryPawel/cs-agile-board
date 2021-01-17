@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\App.xaml
-2-1287961122
+3434876777
 
-7-1478590131
+82074242320
 193-191290616
-MainBoardPage.xaml;MainWindow.xaml;
+AddNewCardPage.xaml;MainBoardPage.xaml;MainWindow.xaml;
 
-True
+False
 

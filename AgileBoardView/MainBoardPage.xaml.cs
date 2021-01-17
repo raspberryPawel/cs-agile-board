@@ -15,10 +15,10 @@ namespace AgileBoardView
             Board.TestsTasksRef = TestTasks;
             Board.ResolveTasksRef = ResolveTasks;
             
-            Board.AddNewTaskToBoard(new Task());
-            Board.CodingTasksList.Add(new Task());
-            Board.TestsTasksList.Add(new Task());
-            Board.ResolveTasksList.Add(new Task());
+            //Board.AddNewTaskToBoard(new Task());
+            //Board.CodingTasksList.Add(new Task());
+            //Board.TestsTasksList.Add(new Task());
+            //Board.ResolveTasksList.Add(new Task());
             Board.SetListContexts();
         }
 
@@ -26,6 +26,13 @@ namespace AgileBoardView
         private void CodingMouseDown(object sender, RoutedEventArgs e) => Board.DeselectLists(coding: false);
         private void TestsMouseDown(object sender, RoutedEventArgs e) => Board.DeselectLists(test: false);
         private void ResolveMouseDown(object sender, RoutedEventArgs e) => Board.DeselectLists(resolve: false);
-        private void DeselectAll() => Board.DeselectLists();
+
+        private void AddNewButton_Click(object sender, RoutedEventArgs e)
+        {
+            Board.DeselectLists();
+            AddNewCardPage addNewCardPage = new AddNewCardPage();
+
+            this.NavigationService.Navigate(addNewCardPage);
+        }
     }
 }
