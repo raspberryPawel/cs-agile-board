@@ -10,12 +10,18 @@
     <Compile Update="AddNewCardPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="EditTaskPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MainBoardPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AddNewCardPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditTaskPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainBoardPage.xaml">

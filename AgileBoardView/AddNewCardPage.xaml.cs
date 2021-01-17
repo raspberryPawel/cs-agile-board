@@ -24,17 +24,10 @@ namespace AgileBoardView
             {
                 string name = txtName.Text;
                 string description = txtDescription.Text;
-                string estimation = cbEstimation.Text;
+                Estimate estimation = Board.GetKeyForValue<Estimate>(cbEstimation.Text, BoardConst.BoardEstimation);
                 DateTime endDate = (DateTime)pickerDateEnd.SelectedDate;
-                Estimate est = Estimate.Low;
 
-                foreach (KeyValuePair<Estimate, string> s in BoardConst.BoardEstimation)
-                {
-                    if (estimation == s.Value)
-                        est = s.Key;
-                }
-
-                Task newTask = new Task(name, description, est, endDate);
+                Task newTask = new Task(name, description, estimation, endDate);
                 Board.AddNewTaskToBoard(newTask);
 
                 this.NavigationService.GoBack();
