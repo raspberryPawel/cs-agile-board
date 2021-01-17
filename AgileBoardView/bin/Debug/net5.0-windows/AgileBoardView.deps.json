@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "AgileBoardView/1.0.0": {
+        "dependencies": {
+          "AgileBoardLogic": "1.0.0"
+        },
+        "runtime": {
+          "AgileBoardView.dll": {}
+        }
+      },
+      "AgileBoardLogic/1.0.0": {
+        "runtime": {
+          "AgileBoardLogic.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AgileBoardView/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AgileBoardLogic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
