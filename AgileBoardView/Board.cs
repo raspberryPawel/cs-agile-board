@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
-using AgileBoardLogic;
 
 namespace AgileBoardView
 {
@@ -23,9 +22,40 @@ namespace AgileBoardView
         public static BoardColumns CurrentlySelectedColumn = BoardColumns.Any;
         public static Task CurrentlySelectedTask = null;
         public static int CurrentlySelectedIndex = -1;
+       
+        public static void AddNewTaskToBoard(Task task) {
+            BoardDB.GetDB().Tasks.Add(task);
+            if(BoardDB.GetDB().SaveChanges() == 1)
+                OpenTasksList.Add(task);
+        }
 
+        public static void RestoreFromDB()
+        {
+            var tasks = BoardDB.GetDB().Tasks;
+            long openColumnId = BoardDB.GetColumnId(BoardColumns.Open);
+            long codingColumnId = BoardDB.GetColumnId(BoardColumns.Coding);
+            long testColumnId = BoardDB.GetColumnId(BoardColumns.Test);
+            long resolveColumnId = BoardDB.GetColumnId(BoardColumns.Resolve);
 
-        public static void AddNewTaskToBoard(Task task) => OpenTasksList.Add(task);
+            var openTasks = tasks.Where(t => t.columnId == openColumnId);
+            var codingTasks = tasks.Where(t => t.columnId == codingColumnId);
+            var testTasks = tasks.Where(t => t.columnId == testColumnId);
+            var resolveTasks = tasks.Where(t => t.columnId == resolveColumnId);
+
+            foreach (Task t in openTasks)
+                OpenTasksList.Add(t);
+
+            foreach (Task t in codingTasks)
+                CodingTasksList.Add(t);
+
+            foreach (Task t in testTasks)
+                TestsTasksList.Add(t);
+
+            foreach (Task t in resolveTasks)
+                ResolveTasksList.Add(t);
+
+        }
+
         public static void SetListContexts() {
             Board.OpenTasksRef.DataContext = Board.OpenTasksList;
             Board.CodingTasksRef.DataContext = Board.CodingTasksList;
@@ -79,11 +109,21 @@ namespace AgileBoardView
 
         public static void MoveSelectedTaskToAnotherColumn(BoardColumns column) {
             Task task = Board.GetListBasedOnSelectedColumn()[Board.CurrentlySelectedIndex];
-            Board.GetListBasedOnColumn(column).Add(task);
-            Board.RemoveSelectedTask();
+
+            long newColumnId = BoardDB.GetColumnId(column);
+            task.columnId = newColumnId;
+
+            if (BoardDB.GetDB().SaveChanges() == 1) {
+                Board.GetListBasedOnColumn(column).Add(task);
+                Board.RemoveSelectedTask();
+            }
         }
 
-        public static void RemoveSelectedTask() => Board.GetListBasedOnSelectedColumn().RemoveAt(Board.CurrentlySelectedIndex);
+        public static void RemoveSelectedTask()
+        {
+            BoardDB.GetDB().Tasks.Remove(Board.CurrentlySelectedTask);
+            Board.GetListBasedOnSelectedColumn().RemoveAt(Board.CurrentlySelectedIndex);
+        }
 
         public static ObservableCollection<Task> GetListBasedOnSelectedColumn() => Board.GetListBasedOnColumn(Board.CurrentlySelectedColumn);
         public static ObservableCollection<Task> GetListBasedOnColumn(BoardColumns column) {

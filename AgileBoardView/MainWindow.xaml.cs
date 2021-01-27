@@ -9,6 +9,7 @@ namespace AgileBoardView
     {
         public MainWindow()
         {
+            Board.RestoreFromDB();
             InitializeComponent();
         }
     }

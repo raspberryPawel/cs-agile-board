@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AgileBoardLogic\AgileBoardLogic.csproj" />
+    <PackageReference
+       Include="Microsoft.EntityFrameworkCore.Sqlite"
+       Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference
+       Include="Microsoft.EntityFrameworkCore.Design"
+       Version="5.0.1" />
   </ItemGroup>
 
 </Project>
