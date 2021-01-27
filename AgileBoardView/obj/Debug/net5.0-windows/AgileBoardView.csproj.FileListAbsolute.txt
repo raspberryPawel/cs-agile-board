@@ -62,3 +62,7 @@ C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\A
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\ref\AgileBoardView.dll
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\AgileBoardView.pdb
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\AgileBoardView.genruntimeconfig.cache
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\AddNewEmploy.g.cs
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\EmployeesList.g.cs
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\AddNewEmploy.baml
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\EmployeesList.baml

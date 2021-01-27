@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,5 +23,7 @@ namespace AgileBoardView
         }
 
         public static long GetColumnId(BoardColumns column) => BoardDB.GetDB().Columns.FirstOrDefault(p => p.Name == BoardConst.BoardColumnsNames[column]).columnId;
+        public static DbSet<Employ> GetEmployees() => BoardDB.GetDB().Employees;
+
     }
 }

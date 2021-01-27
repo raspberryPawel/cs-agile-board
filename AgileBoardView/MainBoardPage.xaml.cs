@@ -58,5 +58,11 @@ namespace AgileBoardView
                 Board.RemoveSelectedTask();
             }
         }
+
+        private void EmployButton_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeesList employeesList = new EmployeesList();
+            this.NavigationService.Navigate(employeesList);
+        }
     }
 }

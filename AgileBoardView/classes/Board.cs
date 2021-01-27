@@ -17,6 +17,7 @@ namespace AgileBoardView
         public static ObservableCollection<Task> CodingTasksList = new ObservableCollection<Task>();
         public static ObservableCollection<Task> TestsTasksList = new ObservableCollection<Task>();
         public static ObservableCollection<Task> ResolveTasksList = new ObservableCollection<Task>();
+        public static ObservableCollection<Employ> EmployeesList = new ObservableCollection<Employ>();
 
         public static ListBox CurrentlySelectedListRef = null;
         public static BoardColumns CurrentlySelectedColumn = BoardColumns.Any;
