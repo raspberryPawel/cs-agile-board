@@ -23,12 +23,15 @@ namespace AgileBoardView
     {
         public EmployeesList()
         {
-            foreach (var employ in BoardDB.GetEmployees())
-                Board.EmployeesList.Add(employ);
-
+            if (Board.EmployeesList.Count == 0) {
+                foreach (var employ in BoardDB.GetEmployees())
+                    Board.EmployeesList.Add(employ);
+            }
+            
             InitializeComponent();
 
-            ListOfEmployees.DataContext = Board.EmployeesList;
+            Board.ListOfEmployeesRef = ListOfEmployees;
+            Board.ListOfEmployeesRef.DataContext = Board.EmployeesList;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -41,6 +44,30 @@ namespace AgileBoardView
         {
             MainBoardPage boardPage = new MainBoardPage();
             this.NavigationService.Navigate(boardPage);
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            int index = ListOfEmployees.SelectedIndex;
+            Board.CurrentlySelectedEmploy = Board.EmployeesList[index];
+
+            EditEmployPage EditEmployPage = new EditEmployPage();
+            this.NavigationService.Navigate(EditEmployPage);
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            int index = ListOfEmployees.SelectedIndex;
+            var employ = Board.EmployeesList[index];
+
+            if (employ.employId != 0)
+            {
+                BoardDB.GetEmployees().Remove(employ);
+
+                if (BoardDB.GetDB().SaveChanges() == 1)
+                    Board.EmployeesList.RemoveAt(index);
+            }
+            else lblError.Content = "Nie można usunąć";
         }
     }
 }

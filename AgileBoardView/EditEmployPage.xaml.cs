@@ -16,38 +16,36 @@ using System.Windows.Shapes;
 namespace AgileBoardView
 {
     /// <summary>
-    /// Logika interakcji dla klasy AddNewEmploy.xaml
+    /// Logika interakcji dla klasy EditEmployPage.xaml
     /// </summary>
-    public partial class AddNewEmploy : Page
+    public partial class EditEmployPage : Page
     {
-        public AddNewEmploy()
+        public EditEmployPage()
         {
             InitializeComponent();
-            foreach (var employ in BoardDB.GetEmployees())
-                cbPosition.Items.Add($"{employ.Name} {employ.Surname}");
 
+            txtName.Text = Board.CurrentlySelectedEmploy.Name;
+            txtSurname.Text = Board.CurrentlySelectedEmploy.Surname;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e) => this.NavigationService.GoBack();
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 string name = txtName.Text;
                 string surname = txtSurname.Text;
 
-                var employ = new Employ(name, surname);
+                Board.CurrentlySelectedEmploy.Name = name;
+                Board.CurrentlySelectedEmploy.Surname = surname;
 
-                BoardDB.GetEmployees().Add(employ);
                 if (BoardDB.GetDB().SaveChanges() == 1)
                 {
-                    Board.EmployeesList.Add(employ);
+                    CollectionViewSource.GetDefaultView(Board.EmployeesList).Refresh();
                     this.NavigationService.GoBack();
                 }
-                else {
-                    lblError.Content = "Błąd dodawania";
-                }
+                else lblError.Content = "Błąd edycji";
             }
             catch (InvalidOperationException err)
             {

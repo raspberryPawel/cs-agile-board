@@ -15,21 +15,21 @@
 //		#endregion
 
 //        #region constructors
-//        public Task() : this("Brak", "Brak", Estimate.Low, DateTime.Now.AddDays(30)) { }
-//		public Task(string name, string description) : this(name, description, Estimate.Low, DateTime.Now.AddDays(30)) { }
-//		public Task(string name, string description, Estimate estimation) : this(name, description, estimation, DateTime.Now.AddDays(30)) { }
-//        public Task(string name, string description, Estimate estimation, DateTime taskEndDate)
-//        {
-//			Name = name;
-//			Description = description;
-//            Estimation = estimation;
-//            TaskEndDate = taskEndDate;
+//public Task() : this("Brak", "Brak", Estimate.Low, DateTime.Now.AddDays(30)) { }
+//public Task(string name, string description) : this(name, description, Estimate.Low, DateTime.Now.AddDays(30)) { }
+//public Task(string name, string description, Estimate estimation) : this(name, description, estimation, DateTime.Now.AddDays(30)) { }
+//public Task(string name, string description, Estimate estimation, DateTime taskEndDate)
+//{
+//    Name = name;
+//    Description = description;
+//    Estimation = estimation;
+//    TaskEndDate = taskEndDate;
 
-//			AddToBoardDate = DateTime.Now;
-//			LastModifyDate = DateTime.Now;
+//    AddToBoardDate = DateTime.Now;
+//    LastModifyDate = DateTime.Now;
 
-//			this.ValidateDates(AddToBoardDate, TaskEndDate);
-//		}
+//    this.ValidateDates(AddToBoardDate, TaskEndDate);
+//}
 //		#endregion
 
 //		private void ValidateDates(DateTime first, DateTime second) {

@@ -15,10 +15,6 @@ namespace AgileBoardView
             Board.TestsTasksRef = TestTasks;
             Board.ResolveTasksRef = ResolveTasks;
             
-            //Board.AddNewTaskToBoard(new Task());
-            //Board.CodingTasksList.Add(new Task());
-            //Board.TestsTasksList.Add(new Task());
-            //Board.ResolveTasksList.Add(new Task());
             Board.SetListContexts();
         }
 

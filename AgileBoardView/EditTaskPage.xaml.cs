@@ -29,6 +29,9 @@ namespace AgileBoardView
             foreach (var s in BoardConst.BoardColumnsNames)
                 cbColumn.Items.Add(s.Value);
 
+            foreach (var employ in BoardDB.GetEmployees())
+                cbAssignee.Items.Add($"{employ.Name} {employ.Surname}");
+
             cbEstimation.Text = BoardConst.BoardEstimation[Board.CurrentlySelectedTask.Estimation];
             cbColumn.Text = BoardConst.BoardColumnsNames[Board.CurrentlySelectedColumn];
         }

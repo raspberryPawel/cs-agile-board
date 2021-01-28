@@ -12,6 +12,7 @@ namespace AgileBoardView
         public static ListBox CodingTasksRef = null;
         public static ListBox TestsTasksRef = null;
         public static ListBox ResolveTasksRef = null;
+        public static ListBox ListOfEmployeesRef = null;
 
         public static ObservableCollection<Task> OpenTasksList = new ObservableCollection<Task>();
         public static ObservableCollection<Task> CodingTasksList = new ObservableCollection<Task>();
@@ -23,6 +24,8 @@ namespace AgileBoardView
         public static BoardColumns CurrentlySelectedColumn = BoardColumns.Any;
         public static Task CurrentlySelectedTask = null;
         public static int CurrentlySelectedIndex = -1;
+
+        public static Employ CurrentlySelectedEmploy = null;
        
         public static void AddNewTaskToBoard(Task task) {
             BoardDB.GetDB().Tasks.Add(task);

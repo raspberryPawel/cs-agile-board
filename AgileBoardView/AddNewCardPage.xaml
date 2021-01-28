@@ -18,6 +18,8 @@
         <Label x:Name="lblDateEnd" Content="Data zakończenia" HorizontalAlignment="Left" Margin="19,234,0,0" VerticalAlignment="Top" Width="131" Height="44" FontSize="14"/>
         <ComboBox x:Name="cbEstimation" HorizontalAlignment="Left" Margin="156,284,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="lblEstimation" Content="Estymata" HorizontalAlignment="Left" Margin="19,280,0,0" VerticalAlignment="Top" Width="115" Height="28" FontSize="14"/>
-        <Label x:Name="lblError" Content="" HorizontalAlignment="Center" Margin="0,322,0,0" VerticalAlignment="Top" Width="746" Height="38" FontSize="14" Background="Transparent" FontWeight="Bold" Foreground="#FFD10000"/>
+        <Label x:Name="lblError" Content="" HorizontalAlignment="Left" Margin="23,360,0,0" VerticalAlignment="Top" Width="439" Height="78" FontSize="14" Background="Transparent" FontWeight="Bold" Foreground="#FFD10000"/>
+        <ComboBox x:Name="cbAssignee" HorizontalAlignment="Left" Margin="154,329,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblPosition" Content="Pracownik" HorizontalAlignment="Left" Margin="17,325,0,0" VerticalAlignment="Top" Width="115" Height="28" FontSize="14"/>
     </Grid>
 </Page>

@@ -4,8 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-#nullable disable
-
 namespace AgileBoardView
 {
     [Table("Tasks")]
@@ -33,11 +31,13 @@ namespace AgileBoardView
         [Column("columnId")]
         public long columnId { get; set; }
 
-        #region constructors
-        public Task() : this("Brak", "Brak", Estimate.Low, DateTime.Now.AddDays(30)) { }
-        public Task(string name, string description) : this(name, description, Estimate.Low, DateTime.Now.AddDays(30)) { }
-        public Task(string name, string description, Estimate estimation) : this(name, description, estimation, DateTime.Now.AddDays(30)) { }
-        public Task(string name, string description, Estimate estimation, DateTime taskEndDate)
+        [Column("employId")]
+        public long employId { get; set; }
+
+        public Task() : this("Brak", "Brak", Estimate.Low, DateTime.Now.AddDays(30), 0, -1) { }
+        public Task(string name, string description) : this(name, description, Estimate.Low, DateTime.Now.AddDays(30), 0, -1) { }
+        public Task(string name, string description, Estimate estimation) : this(name, description, estimation, DateTime.Now.AddDays(30), 0, -1) { }
+        public Task(string name, string description, Estimate estimation, DateTime taskEndDate, long _columnId, long _employId)
         {
             Name = name;
             Description = description;
@@ -46,11 +46,13 @@ namespace AgileBoardView
 
             AddToBoardDate = DateTime.Now;
             LastModifyDate = DateTime.Now;
-            columnId = BoardDB.GetColumnId(BoardColumns.Open);
+
+            columnId = _columnId;
+            employId = _employId;
 
             this.ValidateDates(AddToBoardDate, TaskEndDate);
         }
-        #endregion
+
         private void ValidateDates(DateTime first, DateTime second)
         {
             if (second < first) { throw new InvalidOperationException("End date must be grater than start date"); }
