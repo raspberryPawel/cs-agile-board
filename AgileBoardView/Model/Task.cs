@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace AgileBoardView
@@ -34,9 +35,9 @@ namespace AgileBoardView
         [Column("employId")]
         public long employId { get; set; }
 
-        public Task() : this("Brak", "Brak", Estimate.Low, DateTime.Now.AddDays(30), 0, -1) { }
-        public Task(string name, string description) : this(name, description, Estimate.Low, DateTime.Now.AddDays(30), 0, -1) { }
-        public Task(string name, string description, Estimate estimation) : this(name, description, estimation, DateTime.Now.AddDays(30), 0, -1) { }
+        public Task() : this("Brak", "Brak", Estimate.Low, DateTime.Now.AddDays(30), 0, 0) { }
+        public Task(string name, string description) : this(name, description, Estimate.Low, DateTime.Now.AddDays(30), 0, 0) { }
+        public Task(string name, string description, Estimate estimation) : this(name, description, estimation, DateTime.Now.AddDays(30), 0, 0) { }
         public Task(string name, string description, Estimate estimation, DateTime taskEndDate, long _columnId, long _employId)
         {
             Name = name;

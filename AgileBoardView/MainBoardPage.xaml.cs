@@ -14,7 +14,9 @@ namespace AgileBoardView
             Board.CodingTasksRef = CodingTasks;
             Board.TestsTasksRef = TestTasks;
             Board.ResolveTasksRef = ResolveTasks;
-            
+
+            //OpenTasks.
+
             Board.SetListContexts();
         }
 
@@ -33,7 +35,7 @@ namespace AgileBoardView
 
         private void EditSelectedButton_Click(object sender, RoutedEventArgs e)
         {
-            Tuple<ListBox, BoardColumns, Task, int> neededData = Board.GetSelectedListAndIndex();
+            Tuple<ListBox, BoardColumns, TaskAndEmploy, int> neededData = Board.GetSelectedListAndIndex();
 
             if (!(neededData is null))
             {
@@ -46,7 +48,7 @@ namespace AgileBoardView
 
         private void RemoveSelectedButton_Click(object sender, RoutedEventArgs e)
         {
-            Tuple<ListBox, BoardColumns, Task, int> neededData = Board.GetSelectedListAndIndex();
+            Tuple<ListBox, BoardColumns, TaskAndEmploy, int> neededData = Board.GetSelectedListAndIndex();
 
             if (!(neededData is null))
             {

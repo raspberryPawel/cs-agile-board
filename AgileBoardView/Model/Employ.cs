@@ -32,5 +32,7 @@ namespace AgileBoardView
             Name = name;
             Surname = surname;
         }
+
+        public override string ToString() => $"{Name} {Surname}";
     }
 }

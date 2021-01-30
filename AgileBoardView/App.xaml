@@ -4,6 +4,216 @@
              xmlns:local="clr-namespace:AgileBoardView"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <DataTemplate x:Key="openCardTemplate">
+            <Grid Width="235" MouseDown="OpenMouseDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="135"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <TextBlock Text="Nazwa zadania:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <TextBlock Text="{Binding Name}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <TextBlock Text="Estymata:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <TextBlock Text="{Binding Estimation}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="0">
+                    <TextBlock Text="Data dodania:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <TextBlock Text="{Binding AddToBoardDate}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="0">
+                    <TextBlock Text="Data zakończenia:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="1">
+                    <TextBlock Text="{Binding TaskEndDate}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="0">
+                    <TextBlock Text="Modyfikacja:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="1">
+                    <TextBlock Text="{Binding LastModifyDate}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="5" Grid.Column="0">
+                    <TextBlock Text="Assignee:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="5" Grid.Column="1">
+                    <TextBlock Text="{Binding emp}" Margin="2" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="codingCardTemplate">
+            <Grid Width="235" MouseDown="CodingMouseDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="135"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <TextBlock Text="Nazwa zadania:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <TextBlock Text="{Binding Name}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <TextBlock Text="Estymata:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <TextBlock Text="{Binding Estimation}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="0">
+                    <TextBlock Text="Data dodania:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <TextBlock Text="{Binding AddToBoardDate}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="0">
+                    <TextBlock Text="Data zakończenia:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="1">
+                    <TextBlock Text="{Binding TaskEndDate}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="0">
+                    <TextBlock Text="Modyfikacja:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="1">
+                    <TextBlock Text="{Binding LastModifyDate}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="5" Grid.Column="0">
+                    <TextBlock Text="Assignee:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="5" Grid.Column="1">
+                    <TextBlock Text="{Binding emp}" Margin="2" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="testCardTemplate">
+            <Grid Width="235" MouseDown="TestsMouseDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="135"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <TextBlock Text="Nazwa zadania:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <TextBlock Text="{Binding Name}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <TextBlock Text="Estymata:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <TextBlock Text="{Binding Estimation}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="0">
+                    <TextBlock Text="Data dodania:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <TextBlock Text="{Binding AddToBoardDate}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="0">
+                    <TextBlock Text="Data zakończenia:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="1">
+                    <TextBlock Text="{Binding TaskEndDate}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="0">
+                    <TextBlock Text="Modyfikacja:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="1">
+                    <TextBlock Text="{Binding LastModifyDate}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="5" Grid.Column="0">
+                    <TextBlock Text="Assignee:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="5" Grid.Column="1">
+                    <TextBlock Text="{Binding emp}" Margin="2" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="resolveCardTemplate">
+            <Grid Width="235" MouseDown="ResolveMouseDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="135"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <TextBlock Text="Nazwa zadania:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <TextBlock Text="{Binding Name}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <TextBlock Text="Estymata:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <TextBlock Text="{Binding Estimation}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="0">
+                    <TextBlock Text="Data dodania:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <TextBlock Text="{Binding AddToBoardDate}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="0">
+                    <TextBlock Text="Data zakończenia:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="1">
+                    <TextBlock Text="{Binding TaskEndDate}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="0">
+                    <TextBlock Text="Modyfikacja:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="1">
+                    <TextBlock Text="{Binding LastModifyDate}" Margin="2" />
+                </Grid>
+                <Grid Grid.Row="5" Grid.Column="0">
+                    <TextBlock Text="Assignee:" Height="19" />
+                </Grid>
+                <Grid Grid.Row="5" Grid.Column="1">
+                    <TextBlock Text="{Binding emp}" Margin="2" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
     </Application.Resources>
 </Application>

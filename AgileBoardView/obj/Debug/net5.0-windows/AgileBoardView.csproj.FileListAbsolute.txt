@@ -68,3 +68,4 @@ C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\A
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\EmployeesList.baml
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\EditEmployPage.g.cs
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\EditEmployPage.baml
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\App.baml

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,6 +35,9 @@ namespace AgileBoardView
 
             cbEstimation.Text = BoardConst.BoardEstimation[Board.CurrentlySelectedTask.Estimation];
             cbColumn.Text = BoardConst.BoardColumnsNames[Board.CurrentlySelectedColumn];
+
+            Employ taskEmploy = BoardDB.GetEmployees().ToList().First(employ => employ.employId == Board.CurrentlySelectedTask.task.employId);
+            cbAssignee.Text = $"{taskEmploy.Name} {taskEmploy.Surname}";
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e) => this.NavigationService.GoBack();
@@ -43,19 +47,24 @@ namespace AgileBoardView
             try {
                 string name = txtName.Text;
                 string description = txtDescription.Text;
+                Employ assignee = BoardDB.GetEmployees().ToList().FirstOrDefault(employ => employ.ToString() == cbAssignee.Text);
                 DateTime endDate = (DateTime)pickerDateEnd.SelectedDate;
 
-                Board.CurrentlySelectedTask.Name = name;
-                Board.CurrentlySelectedTask.Description = description;
-                Board.CurrentlySelectedTask.TaskEndDate = endDate;
-                Board.CurrentlySelectedTask.Estimation = Board.GetKeyForValue<Estimate>(cbEstimation.Text, BoardConst.BoardEstimation);
+                Board.CurrentlySelectedTask.task.Name = name;
+                Board.CurrentlySelectedTask.task.Description = description;
+                Board.CurrentlySelectedTask.task.TaskEndDate = endDate;
+                Board.CurrentlySelectedTask.task.employId = assignee.employId;
+                Board.CurrentlySelectedTask.task.Estimation = Board.GetKeyForValue<Estimate>(cbEstimation.Text, BoardConst.BoardEstimation);
 
                 BoardColumns newColumn = Board.GetKeyForValue<BoardColumns>(cbColumn.Text, BoardConst.BoardColumnsNames);
+                Board.CurrentlySelectedTask.employ = assignee;
 
                 if (Board.CurrentlySelectedColumn != newColumn)
                     Board.MoveSelectedTaskToAnotherColumn(newColumn);
 
-                this.NavigationService.GoBack();
+                if (BoardDB.GetDB().SaveChanges() == 1)
+                    this.NavigationService.GoBack();
+
             }
             catch (InvalidOperationException err)
             {

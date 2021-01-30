@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Controls;
 
@@ -14,48 +15,53 @@ namespace AgileBoardView
         public static ListBox ResolveTasksRef = null;
         public static ListBox ListOfEmployeesRef = null;
 
-        public static ObservableCollection<Task> OpenTasksList = new ObservableCollection<Task>();
-        public static ObservableCollection<Task> CodingTasksList = new ObservableCollection<Task>();
-        public static ObservableCollection<Task> TestsTasksList = new ObservableCollection<Task>();
-        public static ObservableCollection<Task> ResolveTasksList = new ObservableCollection<Task>();
+        public static ListBox PrevSelectedList = null;
+
+        public static ObservableCollection<TaskAndEmploy> OpenTasksList = new ObservableCollection<TaskAndEmploy>();
+        public static ObservableCollection<TaskAndEmploy> CodingTasksList = new ObservableCollection<TaskAndEmploy>();
+        public static ObservableCollection<TaskAndEmploy> TestsTasksList = new ObservableCollection<TaskAndEmploy>();
+        public static ObservableCollection<TaskAndEmploy> ResolveTasksList = new ObservableCollection<TaskAndEmploy>();
         public static ObservableCollection<Employ> EmployeesList = new ObservableCollection<Employ>();
 
         public static ListBox CurrentlySelectedListRef = null;
         public static BoardColumns CurrentlySelectedColumn = BoardColumns.Any;
-        public static Task CurrentlySelectedTask = null;
+        public static TaskAndEmploy CurrentlySelectedTask = null;
         public static int CurrentlySelectedIndex = -1;
 
         public static Employ CurrentlySelectedEmploy = null;
        
         public static void AddNewTaskToBoard(Task task) {
             BoardDB.GetDB().Tasks.Add(task);
-            if(BoardDB.GetDB().SaveChanges() == 1)
-                OpenTasksList.Add(task);
+            if (BoardDB.GetDB().SaveChanges() == 1) {
+                var employ = BoardDB.GetEmploy(task.employId);
+
+                OpenTasksList.Add(new TaskAndEmploy(task, employ));
+            }
         }
 
         public static void RestoreFromDB()
         {
-            var tasks = BoardDB.GetDB().Tasks;
             long openColumnId = BoardDB.GetColumnId(BoardColumns.Open);
             long codingColumnId = BoardDB.GetColumnId(BoardColumns.Coding);
             long testColumnId = BoardDB.GetColumnId(BoardColumns.Test);
             long resolveColumnId = BoardDB.GetColumnId(BoardColumns.Resolve);
 
-            var openTasks = tasks.Where(t => t.columnId == openColumnId);
-            var codingTasks = tasks.Where(t => t.columnId == codingColumnId);
-            var testTasks = tasks.Where(t => t.columnId == testColumnId);
-            var resolveTasks = tasks.Where(t => t.columnId == resolveColumnId);
+            var openTasks = BoardDB.GetTasksAndEmployeesFromColumn(openColumnId);
+            var codingTasks = BoardDB.GetTasksAndEmployeesFromColumn(codingColumnId);
+            var testTasks = BoardDB.GetTasksAndEmployeesFromColumn(testColumnId);
+            var resolveTasks = BoardDB.GetTasksAndEmployeesFromColumn(resolveColumnId);
 
-            foreach (Task t in openTasks)
+            foreach (TaskAndEmploy t in openTasks) {
                 OpenTasksList.Add(t);
+            }
 
-            foreach (Task t in codingTasks)
+            foreach (TaskAndEmploy t in codingTasks)
                 CodingTasksList.Add(t);
 
-            foreach (Task t in testTasks)
+            foreach (TaskAndEmploy t in testTasks)
                 TestsTasksList.Add(t);
 
-            foreach (Task t in resolveTasks)
+            foreach (TaskAndEmploy t in resolveTasks)
                 ResolveTasksList.Add(t);
 
         }
@@ -86,25 +92,51 @@ namespace AgileBoardView
             return key;
         }
 
-        public static Tuple<ListBox, BoardColumns, Task, int> GetSelectedListAndIndex() {
+        public static void DeselectPrevSelectedList() {
+            if (!(Board.PrevSelectedList is null))
+                Board.PrevSelectedList.SelectedIndex = -1;
+
+            if (Board.OpenTasksRef.SelectedIndex >= 0) {
+                Debug.WriteLine("ustawiam poprzednią na OpenTasksRef");
+                PrevSelectedList = Board.OpenTasksRef;
+            }
+            if (Board.CodingTasksRef.SelectedIndex >= 0) {
+                Debug.WriteLine("ustawiam poprzednią na CodingTasksRef");
+                PrevSelectedList = Board.CodingTasksRef;
+            }
+            if (Board.TestsTasksRef.SelectedIndex >= 0) {
+                Debug.WriteLine("ustawiam poprzednią na TestsTasksRef");
+                PrevSelectedList = Board.TestsTasksRef;
+            }
+            if (Board.ResolveTasksRef.SelectedIndex >= 0) {
+                Debug.WriteLine("ustawiam poprzednią na ResolveTasksRef");
+                PrevSelectedList = Board.ResolveTasksRef;
+            }
+        }
+
+        public static Tuple<ListBox, BoardColumns, TaskAndEmploy, int> GetSelectedListAndIndex() {
             int OpenTasksListIndex = Board.OpenTasksRef.SelectedIndex;
             int CodingTasksListIndex = Board.CodingTasksRef.SelectedIndex;
             int TestTasksListIndex = Board.TestsTasksRef.SelectedIndex;
             int ResolveTasksListIndex = Board.ResolveTasksRef.SelectedIndex;
 
-            if (OpenTasksListIndex >= 0)
-                return new Tuple<ListBox, BoardColumns, Task, int>(Board.OpenTasksRef, BoardColumns.Open, Board.OpenTasksList[OpenTasksListIndex], OpenTasksListIndex);
-            if (CodingTasksListIndex >= 0)
-                return new Tuple<ListBox, BoardColumns, Task, int>(Board.CodingTasksRef, BoardColumns.Coding, Board.CodingTasksList[CodingTasksListIndex], CodingTasksListIndex);
-            if (TestTasksListIndex >= 0)
-                return new Tuple<ListBox, BoardColumns, Task, int>(Board.TestsTasksRef, BoardColumns.Test, Board.TestsTasksList[TestTasksListIndex], TestTasksListIndex);
-            if (ResolveTasksListIndex >= 0)
-                return new Tuple<ListBox, BoardColumns, Task, int>(Board.ResolveTasksRef, BoardColumns.Resolve, Board.ResolveTasksList[ResolveTasksListIndex], ResolveTasksListIndex);
+            if (OpenTasksListIndex >= 0) {
+                return new Tuple<ListBox, BoardColumns, TaskAndEmploy, int>(Board.OpenTasksRef, BoardColumns.Open, Board.OpenTasksList[OpenTasksListIndex], OpenTasksListIndex);
+            }
+            if (CodingTasksListIndex >= 0) { 
+                return new Tuple<ListBox, BoardColumns, TaskAndEmploy, int>(Board.CodingTasksRef, BoardColumns.Coding, Board.CodingTasksList[CodingTasksListIndex], CodingTasksListIndex);
+            }
+            if (TestTasksListIndex >= 0) { 
+                return new Tuple<ListBox, BoardColumns, TaskAndEmploy, int>(Board.TestsTasksRef, BoardColumns.Test, Board.TestsTasksList[TestTasksListIndex], TestTasksListIndex);
+            }
+            if (ResolveTasksListIndex >= 0) { 
+                return new Tuple<ListBox, BoardColumns, TaskAndEmploy, int>(Board.ResolveTasksRef, BoardColumns.Resolve, Board.ResolveTasksList[ResolveTasksListIndex], ResolveTasksListIndex);
+            }
 
             return null;
         }
 
-        public static void SetAllNeededData(Tuple<ListBox, BoardColumns, Task, int> data) {
+        public static void SetAllNeededData(Tuple<ListBox, BoardColumns, TaskAndEmploy, int> data) {
             Board.CurrentlySelectedListRef = data.Item1;
             Board.CurrentlySelectedColumn = data.Item2;
             Board.CurrentlySelectedTask = data.Item3;
@@ -112,10 +144,10 @@ namespace AgileBoardView
         }
 
         public static void MoveSelectedTaskToAnotherColumn(BoardColumns column) {
-            Task task = Board.GetListBasedOnSelectedColumn()[Board.CurrentlySelectedIndex];
+            TaskAndEmploy task = Board.GetListBasedOnSelectedColumn()[Board.CurrentlySelectedIndex];
 
             long newColumnId = BoardDB.GetColumnId(column);
-            task.columnId = newColumnId;
+            task.task.columnId = newColumnId;
 
             if (BoardDB.GetDB().SaveChanges() == 1) {
                 Board.GetListBasedOnColumn(column).Add(task);
@@ -125,12 +157,12 @@ namespace AgileBoardView
 
         public static void RemoveSelectedTask()
         {
-            BoardDB.GetDB().Tasks.Remove(Board.CurrentlySelectedTask);
+            BoardDB.GetDB().Tasks.Remove(Board.CurrentlySelectedTask.task);
             Board.GetListBasedOnSelectedColumn().RemoveAt(Board.CurrentlySelectedIndex);
         }
 
-        public static ObservableCollection<Task> GetListBasedOnSelectedColumn() => Board.GetListBasedOnColumn(Board.CurrentlySelectedColumn);
-        public static ObservableCollection<Task> GetListBasedOnColumn(BoardColumns column) {
+        public static ObservableCollection<TaskAndEmploy> GetListBasedOnSelectedColumn() => Board.GetListBasedOnColumn(Board.CurrentlySelectedColumn);
+        public static ObservableCollection<TaskAndEmploy> GetListBasedOnColumn(BoardColumns column) {
             switch(column) {
                 case BoardColumns.Open: return Board.OpenTasksList;
                 case BoardColumns.Coding: return Board.CodingTasksList;
