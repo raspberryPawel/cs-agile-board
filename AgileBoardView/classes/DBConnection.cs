@@ -22,8 +22,7 @@ namespace AgileBoardView
 
         public string Name => task.Name;
         public string Description => task.Description;
-
-        public Estimate Estimation => task.Estimation;
+        public string Estimation => Board.Estimates[task.Estimation].Name;
         public DateTime AddToBoardDate => task.AddToBoardDate;
         public DateTime LastModifyDate => task.LastModifyDate;
         public DateTime TaskEndDate => task.TaskEndDate;
@@ -56,12 +55,11 @@ namespace AgileBoardView
                         (t, e) => new TaskAndEmploy(t, e));
         }
 
-        public static long GetColumnId(BoardColumns column) => BoardDB.GetColumns().FirstOrDefault(p => p.Name == BoardConst.BoardColumnsNames[column]).columnId;
         public static Employ GetEmploy(long employId) => BoardDB.GetEmployees().FirstOrDefault(p => p.employId == employId);
-
         public static DbSet<Employ> GetEmployees() => BoardDB.GetDB().Employees;
         public static DbSet<Task> GetTasks() => BoardDB.GetDB().Tasks;
         public static DbSet<Column> GetColumns() => BoardDB.GetDB().Columns;
+        public static DbSet<Estimate> GetEstimations() => BoardDB.GetDB().Estimates;
 
     }
 }

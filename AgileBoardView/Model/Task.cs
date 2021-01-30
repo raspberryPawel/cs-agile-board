@@ -21,7 +21,7 @@ namespace AgileBoardView
         
         [Column(TypeName = "STRING")]
         public string Description { get; set; }
-        public Estimate Estimation { get; set; }
+        public long Estimation { get; set; }
         [Column(TypeName = "DATETIME")]
         public DateTime AddToBoardDate { get; private set; }
         [Column(TypeName = "DATETIME")]
@@ -35,14 +35,14 @@ namespace AgileBoardView
         [Column("employId")]
         public long employId { get; set; }
 
-        public Task() : this("Brak", "Brak", Estimate.Low, DateTime.Now.AddDays(30), 0, 0) { }
-        public Task(string name, string description) : this(name, description, Estimate.Low, DateTime.Now.AddDays(30), 0, 0) { }
+        public Task() : this("Brak", "Brak", Board.Estimates.First().Value, DateTime.Now.AddDays(30), 0, 0) { }
+        public Task(string name, string description) : this(name, description, Board.Estimates.First().Value, DateTime.Now.AddDays(30), 0, 0) { }
         public Task(string name, string description, Estimate estimation) : this(name, description, estimation, DateTime.Now.AddDays(30), 0, 0) { }
         public Task(string name, string description, Estimate estimation, DateTime taskEndDate, long _columnId, long _employId)
         {
             Name = name;
             Description = description;
-            Estimation = estimation;
+            Estimation = estimation.estimateId;
             TaskEndDate = taskEndDate;
 
             AddToBoardDate = DateTime.Now;

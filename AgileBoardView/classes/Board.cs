@@ -15,16 +15,17 @@ namespace AgileBoardView
         public static ListBox ResolveTasksRef = null;
         public static ListBox ListOfEmployeesRef = null;
 
-        public static ListBox PrevSelectedList = null;
-
         public static ObservableCollection<TaskAndEmploy> OpenTasksList = new ObservableCollection<TaskAndEmploy>();
         public static ObservableCollection<TaskAndEmploy> CodingTasksList = new ObservableCollection<TaskAndEmploy>();
         public static ObservableCollection<TaskAndEmploy> TestsTasksList = new ObservableCollection<TaskAndEmploy>();
         public static ObservableCollection<TaskAndEmploy> ResolveTasksList = new ObservableCollection<TaskAndEmploy>();
         public static ObservableCollection<Employ> EmployeesList = new ObservableCollection<Employ>();
 
+        public static Dictionary<long, Estimate> Estimates = new Dictionary<long, Estimate>();
+        public static Dictionary<long, Column> Columns = new Dictionary<long, Column>();
+
         public static ListBox CurrentlySelectedListRef = null;
-        public static BoardColumns CurrentlySelectedColumn = BoardColumns.Any;
+        public static Column CurrentlySelectedColumn = null;
         public static TaskAndEmploy CurrentlySelectedTask = null;
         public static int CurrentlySelectedIndex = -1;
 
@@ -39,12 +40,25 @@ namespace AgileBoardView
             }
         }
 
+        public static void GetEstimations() {
+            var estimations = BoardDB.GetEstimations();
+
+            foreach (var est in estimations)
+                Board.Estimates.Add(est.estimateId, est);
+        }
+        public static void GetColumns() {
+            var columns = BoardDB.GetColumns();
+
+            foreach (var c in columns)
+                Board.Columns.Add(c.columnId, c);
+        }
+
         public static void RestoreFromDB()
         {
-            long openColumnId = BoardDB.GetColumnId(BoardColumns.Open);
-            long codingColumnId = BoardDB.GetColumnId(BoardColumns.Coding);
-            long testColumnId = BoardDB.GetColumnId(BoardColumns.Test);
-            long resolveColumnId = BoardDB.GetColumnId(BoardColumns.Resolve);
+            long openColumnId = GetColumnForName("Open").columnId;
+            long codingColumnId = GetColumnForName("Coding").columnId;
+            long testColumnId = GetColumnForName("Test").columnId;
+            long resolveColumnId = GetColumnForName("Resolve").columnId;
 
             var openTasks = BoardDB.GetTasksAndEmployeesFromColumn(openColumnId);
             var codingTasks = BoardDB.GetTasksAndEmployeesFromColumn(codingColumnId);
@@ -59,7 +73,9 @@ namespace AgileBoardView
                 CodingTasksList.Add(t);
 
             foreach (TaskAndEmploy t in testTasks)
+            {
                 TestsTasksList.Add(t);
+            }
 
             foreach (TaskAndEmploy t in resolveTasks)
                 ResolveTasksList.Add(t);
@@ -80,79 +96,87 @@ namespace AgileBoardView
             if(resolve) ResolveTasksRef.SelectedIndex = -1;
         }
 
-        public static T GetKeyForValue<T>(string value, Dictionary<T, string> dictionary) {
-            T key = dictionary.Keys.First();
+        //public static T GetKeyForValue<T>(string value, Dictionary<T, string> dictionary) {
+        //    T key = dictionary.Keys.First();
 
-            foreach (KeyValuePair<T, string> s in dictionary)
+        //    foreach (KeyValuePair<T, string> s in dictionary)
+        //    {
+        //        if (value == s.Value)
+        //            key = s.Key;
+        //    }
+
+        //    return key;
+        //}
+
+        public static Column GetColumnForName(string value)
+        {
+            var dictionary = Board.Columns;
+            long key = dictionary.Keys.First();
+
+            foreach (KeyValuePair<long, Column> s in dictionary)
             {
-                if (value == s.Value)
+                if (value == s.Value.Name)
                     key = s.Key;
             }
 
-            return key;
+            return Board.Columns[key];
         }
 
-        public static void DeselectPrevSelectedList() {
-            if (!(Board.PrevSelectedList is null))
-                Board.PrevSelectedList.SelectedIndex = -1;
+        public static Estimate GetEstimationForName(string value)
+        {
+            var dictionary = Board.Estimates;
+            long key = dictionary.Keys.First();
 
-            if (Board.OpenTasksRef.SelectedIndex >= 0) {
-                Debug.WriteLine("ustawiam poprzednią na OpenTasksRef");
-                PrevSelectedList = Board.OpenTasksRef;
+            foreach (KeyValuePair<long, Estimate> s in dictionary)
+            {
+                if (value == s.Value.Name)
+                    key = s.Key;
             }
-            if (Board.CodingTasksRef.SelectedIndex >= 0) {
-                Debug.WriteLine("ustawiam poprzednią na CodingTasksRef");
-                PrevSelectedList = Board.CodingTasksRef;
-            }
-            if (Board.TestsTasksRef.SelectedIndex >= 0) {
-                Debug.WriteLine("ustawiam poprzednią na TestsTasksRef");
-                PrevSelectedList = Board.TestsTasksRef;
-            }
-            if (Board.ResolveTasksRef.SelectedIndex >= 0) {
-                Debug.WriteLine("ustawiam poprzednią na ResolveTasksRef");
-                PrevSelectedList = Board.ResolveTasksRef;
-            }
+
+            return Board.Estimates[key];
         }
 
-        public static Tuple<ListBox, BoardColumns, TaskAndEmploy, int> GetSelectedListAndIndex() {
+        public static Tuple<ListBox, Column, TaskAndEmploy, int> GetSelectedListAndIndex() {
             int OpenTasksListIndex = Board.OpenTasksRef.SelectedIndex;
             int CodingTasksListIndex = Board.CodingTasksRef.SelectedIndex;
             int TestTasksListIndex = Board.TestsTasksRef.SelectedIndex;
             int ResolveTasksListIndex = Board.ResolveTasksRef.SelectedIndex;
 
             if (OpenTasksListIndex >= 0) {
-                return new Tuple<ListBox, BoardColumns, TaskAndEmploy, int>(Board.OpenTasksRef, BoardColumns.Open, Board.OpenTasksList[OpenTasksListIndex], OpenTasksListIndex);
+                return new Tuple<ListBox, Column, TaskAndEmploy, int>(Board.OpenTasksRef, GetColumnForName("Open"), Board.OpenTasksList[OpenTasksListIndex], OpenTasksListIndex);
             }
             if (CodingTasksListIndex >= 0) { 
-                return new Tuple<ListBox, BoardColumns, TaskAndEmploy, int>(Board.CodingTasksRef, BoardColumns.Coding, Board.CodingTasksList[CodingTasksListIndex], CodingTasksListIndex);
+                return new Tuple<ListBox, Column, TaskAndEmploy, int>(Board.CodingTasksRef, GetColumnForName("Coding"), Board.CodingTasksList[CodingTasksListIndex], CodingTasksListIndex);
             }
             if (TestTasksListIndex >= 0) { 
-                return new Tuple<ListBox, BoardColumns, TaskAndEmploy, int>(Board.TestsTasksRef, BoardColumns.Test, Board.TestsTasksList[TestTasksListIndex], TestTasksListIndex);
+                return new Tuple<ListBox, Column, TaskAndEmploy, int>(Board.TestsTasksRef, GetColumnForName("Test"), Board.TestsTasksList[TestTasksListIndex], TestTasksListIndex);
             }
             if (ResolveTasksListIndex >= 0) { 
-                return new Tuple<ListBox, BoardColumns, TaskAndEmploy, int>(Board.ResolveTasksRef, BoardColumns.Resolve, Board.ResolveTasksList[ResolveTasksListIndex], ResolveTasksListIndex);
+                return new Tuple<ListBox, Column, TaskAndEmploy, int>(Board.ResolveTasksRef, GetColumnForName("Resolve"), Board.ResolveTasksList[ResolveTasksListIndex], ResolveTasksListIndex);
             }
 
             return null;
         }
 
-        public static void SetAllNeededData(Tuple<ListBox, BoardColumns, TaskAndEmploy, int> data) {
+        public static void SetAllNeededData(Tuple<ListBox, Column, TaskAndEmploy, int> data) {
             Board.CurrentlySelectedListRef = data.Item1;
             Board.CurrentlySelectedColumn = data.Item2;
             Board.CurrentlySelectedTask = data.Item3;
             Board.CurrentlySelectedIndex = data.Item4;
         }
 
-        public static void MoveSelectedTaskToAnotherColumn(BoardColumns column) {
+        public static int MoveSelectedTaskToAnotherColumn(Column column) {
             TaskAndEmploy task = Board.GetListBasedOnSelectedColumn()[Board.CurrentlySelectedIndex];
 
-            long newColumnId = BoardDB.GetColumnId(column);
-            task.task.columnId = newColumnId;
+            task.task.columnId = column.columnId;
+            int res = BoardDB.GetDB().SaveChanges();
 
-            if (BoardDB.GetDB().SaveChanges() == 1) {
+            if (res == 1) {
                 Board.GetListBasedOnColumn(column).Add(task);
                 Board.RemoveSelectedTask();
             }
+
+            return res;
         }
 
         public static void RemoveSelectedTask()
@@ -162,12 +186,12 @@ namespace AgileBoardView
         }
 
         public static ObservableCollection<TaskAndEmploy> GetListBasedOnSelectedColumn() => Board.GetListBasedOnColumn(Board.CurrentlySelectedColumn);
-        public static ObservableCollection<TaskAndEmploy> GetListBasedOnColumn(BoardColumns column) {
-            switch(column) {
-                case BoardColumns.Open: return Board.OpenTasksList;
-                case BoardColumns.Coding: return Board.CodingTasksList;
-                case BoardColumns.Test: return Board.TestsTasksList;
-                case BoardColumns.Resolve: return Board.ResolveTasksList;
+        public static ObservableCollection<TaskAndEmploy> GetListBasedOnColumn(Column column) {
+            switch(column.Name) {
+                case "Open": return Board.OpenTasksList;
+                case "Coding": return Board.CodingTasksList;
+                case "Test": return Board.TestsTasksList;
+                case "Resolve": return Board.ResolveTasksList;
                 default: return null;
             }
         }

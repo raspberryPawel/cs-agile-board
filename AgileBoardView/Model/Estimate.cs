@@ -1,20 +1,22 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 #nullable disable
-
 namespace AgileBoardView
 {
-    [Table("Columns")]
-    [Index(nameof(columnId), IsUnique = true)]
-    public partial class Column
+    [Table("Estimates")]
+    [Index(nameof(estimateId), IsUnique = true)]
+    public class Estimate
     {
         [Key]
-        [Column("columnId")]
-        public long columnId { get; set; }
+        [Column("estimateId")]
+        public long estimateId { get; set; }
 
         [Required]
         [Column(TypeName = "STRING")]

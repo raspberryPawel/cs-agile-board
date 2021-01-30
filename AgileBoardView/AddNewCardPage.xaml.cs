@@ -11,7 +11,7 @@ namespace AgileBoardView
         public AddNewCardPage()
         {
             InitializeComponent();
-            foreach (var s in BoardConst.BoardEstimation)
+            foreach (var s in Board.Estimates)
                 cbEstimation.Items.Add(s.Value);
 
             foreach (var employ in BoardDB.GetEmployees())
@@ -21,7 +21,7 @@ namespace AgileBoardView
                     cbAssignee.Text = $"{employ.Name} {employ.Surname}";
             }
 
-            cbEstimation.Text = BoardConst.BoardEstimation[Estimate.Low];
+            cbEstimation.Text = Board.Estimates.First().Value.Name;
             pickerDateEnd.SelectedDate = DateTime.Now.AddDays(7);
         }
 
@@ -33,10 +33,10 @@ namespace AgileBoardView
             {
                 string name = txtName.Text;
                 string description = txtDescription.Text;
-                Estimate estimation = Board.GetKeyForValue<Estimate>(cbEstimation.Text, BoardConst.BoardEstimation);
+                Estimate estimation = Board.GetEstimationForName(cbEstimation.Text);
                 DateTime endDate = (DateTime)pickerDateEnd.SelectedDate;
                 long employId = BoardDB.GetEmployees().ToList().First(employ => $"{employ.Name} {employ.Surname}" == cbAssignee.Text).employId;
-                long openColumnId = BoardDB.GetColumnId(BoardColumns.Open);
+                long openColumnId = Board.GetColumnForName("Open").columnId;
 
                 Task newTask = new Task(name, description, estimation, endDate, openColumnId, employId);
                 Board.AddNewTaskToBoard(newTask);

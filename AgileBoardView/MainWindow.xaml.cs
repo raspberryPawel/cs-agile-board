@@ -9,7 +9,10 @@ namespace AgileBoardView
     {
         public MainWindow()
         {
+            Board.GetColumns();
+            Board.GetEstimations();
             Board.RestoreFromDB();
+
             InitializeComponent();
         }
     }

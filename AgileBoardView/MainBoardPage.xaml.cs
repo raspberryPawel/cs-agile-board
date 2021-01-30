@@ -35,7 +35,7 @@ namespace AgileBoardView
 
         private void EditSelectedButton_Click(object sender, RoutedEventArgs e)
         {
-            Tuple<ListBox, BoardColumns, TaskAndEmploy, int> neededData = Board.GetSelectedListAndIndex();
+            Tuple<ListBox, Column, TaskAndEmploy, int> neededData = Board.GetSelectedListAndIndex();
 
             if (!(neededData is null))
             {
@@ -48,7 +48,7 @@ namespace AgileBoardView
 
         private void RemoveSelectedButton_Click(object sender, RoutedEventArgs e)
         {
-            Tuple<ListBox, BoardColumns, TaskAndEmploy, int> neededData = Board.GetSelectedListAndIndex();
+            Tuple<ListBox, Column, TaskAndEmploy, int> neededData = Board.GetSelectedListAndIndex();
 
             if (!(neededData is null))
             {
