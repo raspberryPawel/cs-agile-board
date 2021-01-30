@@ -157,7 +157,7 @@ namespace AgileBoardView {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AgileBoardView;component/addnewcardpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AgileBoardView;V1.0.0.0;component/addnewcardpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AddNewCardPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

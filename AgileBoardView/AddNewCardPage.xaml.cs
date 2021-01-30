@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,9 +15,10 @@ namespace AgileBoardView
 
             foreach (var employ in BoardDB.GetEmployees())
             {
-                cbAssignee.Items.Add($"{employ.Name} {employ.Surname}");
+                cbAssignee.Items.Add(employ);
+
                 if (employ.employId == 0)
-                    cbAssignee.Text = $"{employ.Name} {employ.Surname}";
+                    cbAssignee.Text = employ.ToString();
             }
 
             cbEstimation.Text = Board.Estimates.First().Value.Name;
@@ -33,10 +33,12 @@ namespace AgileBoardView
             {
                 string name = txtName.Text;
                 string description = txtDescription.Text;
-                Estimate estimation = Board.GetEstimationForName(cbEstimation.Text);
-                DateTime endDate = (DateTime)pickerDateEnd.SelectedDate;
+               
                 long employId = BoardDB.GetEmployees().ToList().First(employ => $"{employ.Name} {employ.Surname}" == cbAssignee.Text).employId;
-                long openColumnId = Board.GetColumnForName("Open").columnId;
+                long openColumnId = Board.GetKeyForValue("Open", Board.Columns).columnId;
+
+                Estimate estimation = Board.GetKeyForValue<Estimate>(cbEstimation.Text, Board.Estimates);
+                DateTime endDate = (DateTime)pickerDateEnd.SelectedDate;
 
                 Task newTask = new Task(name, description, estimation, endDate, openColumnId, employId);
                 Board.AddNewTaskToBoard(newTask);
@@ -44,7 +46,7 @@ namespace AgileBoardView
                 this.NavigationService.GoBack();
             }
             catch (InvalidOperationException err){
-                lblError.Content = $"{err.Message} {cbAssignee.Text}";
+                lblError.Content = $"{err.Message}";
             }
         }
     }

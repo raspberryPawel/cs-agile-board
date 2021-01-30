@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AgileBoardView
 {
@@ -26,13 +16,13 @@ namespace AgileBoardView
             pickerDateEnd.SelectedDate = Board.CurrentlySelectedTask.TaskEndDate;
 
             foreach (var s in Board.Estimates)
-                cbEstimation.Items.Add(s.Value.Name);
+                cbEstimation.Items.Add(s.Value);
 
             foreach (var s in Board.Columns)
                 cbColumn.Items.Add(s.Value);
 
             foreach (var employ in BoardDB.GetEmployees())
-                cbAssignee.Items.Add($"{employ.Name} {employ.Surname}");
+                cbAssignee.Items.Add(employ);
 
             cbEstimation.Text = Board.CurrentlySelectedTask.Estimation;
             cbColumn.Text = Board.Columns[Board.CurrentlySelectedTask.task.columnId].ToString();
@@ -48,6 +38,7 @@ namespace AgileBoardView
             try {
                 string name = txtName.Text;
                 string description = txtDescription.Text;
+
                 Employ assignee = BoardDB.GetEmployees().ToList().FirstOrDefault(employ => employ.ToString() == cbAssignee.Text);
                 DateTime endDate = (DateTime)pickerDateEnd.SelectedDate;
 
@@ -55,12 +46,11 @@ namespace AgileBoardView
                 Board.CurrentlySelectedTask.task.Description = description;
                 Board.CurrentlySelectedTask.task.TaskEndDate = endDate;
                 Board.CurrentlySelectedTask.task.employId = assignee.employId;
-                Board.CurrentlySelectedTask.task.Estimation = Board.GetEstimationForName(cbEstimation.Text).estimateId;
+                Board.CurrentlySelectedTask.task.Estimation = Board.GetKeyForValue(cbEstimation.Text, Board.Estimates).estimateId;
 
-                Column newColumn = Board.GetColumnForName(cbColumn.Text);
+                Column newColumn = Board.GetKeyForValue(cbColumn.Text, Board.Columns);
                 Board.CurrentlySelectedTask.employ = assignee;
 
-                Debug.WriteLine($"siema siema nowa kolumna => {newColumn}");
                 int result = -1;
                 if (Board.CurrentlySelectedColumn != newColumn)
                     result = Board.MoveSelectedTaskToAnotherColumn(newColumn);

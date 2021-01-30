@@ -10,7 +10,7 @@ namespace AgileBoardView
 {
     [Table("Columns")]
     [Index(nameof(columnId), IsUnique = true)]
-    public partial class Column
+    public partial class Column: IWithName
     {
         [Key]
         [Column("columnId")]

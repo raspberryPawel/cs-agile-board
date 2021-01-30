@@ -1,34 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace AgileBoardView
 {
-
-    public class TaskAndEmploy
-    {
-        public Task task;
-        public Employ employ;
-
-        public TaskAndEmploy(Task task, Employ employ)
-        {
-            this.task = task;
-            this.employ = employ;
-        }
-
-        public string Name => task.Name;
-        public string Description => task.Description;
-        public string Estimation => Board.Estimates[task.Estimation].Name;
-        public DateTime AddToBoardDate => task.AddToBoardDate;
-        public DateTime LastModifyDate => task.LastModifyDate;
-        public DateTime TaskEndDate => task.TaskEndDate;
-        public string emp => employ.ToString();
-    }
-
     public class BoardDB
     {
         private static AgileBoardDB db = null;
@@ -55,6 +30,7 @@ namespace AgileBoardView
                         (t, e) => new TaskAndEmploy(t, e));
         }
 
+        public static int SaveChanges() => BoardDB.GetDB().SaveChanges();
         public static Employ GetEmploy(long employId) => BoardDB.GetEmployees().FirstOrDefault(p => p.employId == employId);
         public static DbSet<Employ> GetEmployees() => BoardDB.GetDB().Employees;
         public static DbSet<Task> GetTasks() => BoardDB.GetDB().Tasks;

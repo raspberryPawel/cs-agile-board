@@ -15,8 +15,6 @@ namespace AgileBoardView
             Board.TestsTasksRef = TestTasks;
             Board.ResolveTasksRef = ResolveTasks;
 
-            //OpenTasks.
-
             Board.SetListContexts();
         }
 
