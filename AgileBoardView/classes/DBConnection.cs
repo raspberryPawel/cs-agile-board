@@ -30,12 +30,25 @@ namespace AgileBoardView
                         (t, e) => new TaskAndEmploy(t, e));
         }
 
+        public static IQueryable<EmployAndPosition> GetEmployeesAndPosition()
+        {
+            var positions = BoardDB.GetPositions();
+            var employees = BoardDB.GetEmployees();
+
+            return employees
+                .Join(positions, employ => employ.positionId, position => position.positionId,
+                        (e, p) => new EmployAndPosition(e, p));
+                
+        }
+
+
         public static int SaveChanges() => BoardDB.GetDB().SaveChanges();
         public static Employ GetEmploy(long employId) => BoardDB.GetEmployees().FirstOrDefault(p => p.employId == employId);
         public static DbSet<Employ> GetEmployees() => BoardDB.GetDB().Employees;
         public static DbSet<Task> GetTasks() => BoardDB.GetDB().Tasks;
         public static DbSet<Column> GetColumns() => BoardDB.GetDB().Columns;
         public static DbSet<Estimate> GetEstimations() => BoardDB.GetDB().Estimates;
+        public static DbSet<Position> GetPositions() => BoardDB.GetDB().Positions;
 
     }
 }

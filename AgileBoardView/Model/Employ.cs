@@ -25,12 +25,15 @@ namespace AgileBoardView
 
         [Required]
         [Column(TypeName = "INT")]
-        public int Position { get; set; }
+        public long positionId { get; set; }
 
-        public Employ(string name, string surname)
+        public Employ(string name, string surname) : this(name, surname, 0) { }
+
+        public Employ(string name, string surname, long position)
         {
             Name = name;
             Surname = surname;
+            positionId = position;
         }
 
         public override string ToString() => $"{Name} {Surname}";

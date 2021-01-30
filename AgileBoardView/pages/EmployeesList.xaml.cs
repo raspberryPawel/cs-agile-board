@@ -21,7 +21,7 @@ namespace AgileBoardView
             InitializeComponent();
 
             Board.ListOfEmployeesRef = ListOfEmployees;
-            Board.ListOfEmployeesRef.DataContext = Board.EmployeesList;
+            Board.ListOfEmployeesRef.DataContext = Board.EmployAndPositionList;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -40,7 +40,7 @@ namespace AgileBoardView
         {
             int index = ListOfEmployees.SelectedIndex;
             if (index >= 0) {
-                Board.CurrentlySelectedEmploy = Board.EmployeesList[index];
+                Board.CurrentlySelectedEmploy = Board.EmployAndPositionList[index];
 
                 EditEmployPage EditEmployPage = new EditEmployPage();
                 this.NavigationService.Navigate(EditEmployPage);
@@ -57,8 +57,10 @@ namespace AgileBoardView
                 if (employ.employId != 0) {
                     BoardDB.GetEmployees().Remove(employ);
 
-                    if (BoardDB.GetDB().SaveChanges() == 1)
+                    if (BoardDB.GetDB().SaveChanges() == 1) {
                         Board.EmployeesList.RemoveAt(index);
+                        Board.EmployAndPositionList.RemoveAt(index);
+                    }
                 }
                 else lblError.Content = "Nie można usunąć";
             }

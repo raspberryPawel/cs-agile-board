@@ -10,6 +10,8 @@ namespace AgileBoardView
         public MainWindow()
         {
             Board.GetColumns();
+            Board.GetPositions();
+            Board.GetEmployeesAndPositions();
             Board.GetEstimations();
             Board.RestoreFromDB();
 

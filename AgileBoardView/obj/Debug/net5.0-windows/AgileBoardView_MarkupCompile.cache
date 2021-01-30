@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\App.xaml
-7-979198625
+10-861341047
 
-17542784651
+23-1025891510
 215-212931055
-AddNewCardPage.xaml;AddNewEmploy.xaml;EditEmployPage.xaml;EditTaskPage.xaml;EmployeesList.xaml;MainBoardPage.xaml;MainWindow.xaml;
+MainWindow.xaml;pages\AddNewEmploy.xaml;pages\AddNewPosition.xaml;pages\AddNewTaskPage.xaml;pages\EditEmployPage.xaml;pages\EditPositionPage.xaml;pages\EditTaskPage.xaml;pages\EmployeesList.xaml;pages\MainBoardPage.xaml;pages\PositionsList.xaml;
 
 False
 

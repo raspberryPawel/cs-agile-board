@@ -7,42 +7,51 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="AddNewCardPage.xaml.cs">
+    <Compile Update="pages\AddNewTaskPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="AddNewEmploy.xaml.cs">
+    <Compile Update="pages\AddNewEmploy.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="EditEmployPage.xaml.cs">
+    <Compile Update="pages\EditPositionPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="EditTaskPage.xaml.cs">
+    <Compile Update="pages\EditTaskPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="EmployeesList.xaml.cs">
+    <Compile Update="pages\EmployeesList.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MainBoardPage.xaml.cs">
+    <Compile Update="pages\MainBoardPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="AddNewCardPage.xaml">
+    <Page Update="pages\AddNewPosition.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="AddNewEmploy.xaml">
+    <Page Update="pages\AddNewTaskPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="EditEmployPage.xaml">
+    <Page Update="pages\AddNewEmploy.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="EditTaskPage.xaml">
+    <Page Update="pages\EditEmployPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="EmployeesList.xaml">
+    <Page Update="pages\EditPositionPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainBoardPage.xaml">
+    <Page Update="pages\EditTaskPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="pages\PositionsList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="pages\EmployeesList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="pages\MainBoardPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

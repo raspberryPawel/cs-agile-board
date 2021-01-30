@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -8,15 +7,11 @@ namespace AgileBoardView
     /// <summary>
     /// Logika interakcji dla klasy AddNewEmploy.xaml
     /// </summary>
-    public partial class AddNewEmploy : Page
+    public partial class AddNewPosition : Page
     {
-        public AddNewEmploy()
+        public AddNewPosition()
         {
             InitializeComponent();
-            foreach (var p in Board.PositionsList)
-                cbPosition.Items.Add(p);
-
-            cbPosition.Text = Board.PositionsList.First().Name;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e) => this.NavigationService.GoBack();
@@ -26,17 +21,12 @@ namespace AgileBoardView
             try
             {
                 string name = txtName.Text;
-                string surname = txtSurname.Text;
-                Position position = Board.PositionsList.First(p => p.ToString() == cbPosition.Text);
+                var position = new Position(name);
 
-                var employ = new Employ(name, surname, position.positionId);
-
-                BoardDB.GetEmployees().Add(employ);
+                BoardDB.GetPositions().Add(position);
                 if (BoardDB.GetDB().SaveChanges() == 1)
                 {
-                    Board.EmployeesList.Add(employ);
-                    Board.EmployAndPositionList.Add(new EmployAndPosition(employ, position));
-
+                    Board.PositionsList.Add(position);
                     this.NavigationService.GoBack();
                 }
                 else {

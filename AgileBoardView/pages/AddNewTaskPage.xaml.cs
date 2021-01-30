@@ -34,7 +34,7 @@ namespace AgileBoardView
                 string name = txtName.Text;
                 string description = txtDescription.Text;
                
-                long employId = BoardDB.GetEmployees().ToList().First(employ => $"{employ.Name} {employ.Surname}" == cbAssignee.Text).employId;
+                long employId = BoardDB.GetEmployees().ToList().First(employ => employ.ToString() == cbAssignee.Text).employId;
                 long openColumnId = Board.GetKeyForValue("Open", Board.Columns).columnId;
 
                 Estimate estimation = Board.GetKeyForValue<Estimate>(cbEstimation.Text, Board.Estimates);

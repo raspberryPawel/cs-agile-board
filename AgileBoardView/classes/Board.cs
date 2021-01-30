@@ -13,8 +13,11 @@ namespace AgileBoardView
         public static ListBox TestsTasksRef = null;
         public static ListBox ResolveTasksRef = null;
         public static ListBox ListOfEmployeesRef = null;
+        public static ListBox ListOfPositionsRef = null;
 
         public static ObservableCollection<Employ> EmployeesList = new ObservableCollection<Employ>();
+        public static ObservableCollection<Position> PositionsList = new ObservableCollection<Position>();
+        public static ObservableCollection<EmployAndPosition> EmployAndPositionList = new ObservableCollection<EmployAndPosition>();
         public static ObservableCollection<TaskAndEmploy> OpenTasksList = new ObservableCollection<TaskAndEmploy>();
         public static ObservableCollection<TaskAndEmploy> CodingTasksList = new ObservableCollection<TaskAndEmploy>();
         public static ObservableCollection<TaskAndEmploy> TestsTasksList = new ObservableCollection<TaskAndEmploy>();
@@ -24,7 +27,8 @@ namespace AgileBoardView
         public static Dictionary<long, Estimate> Estimates = new Dictionary<long, Estimate>();
 
         public static Column CurrentlySelectedColumn = null;
-        public static Employ CurrentlySelectedEmploy = null;
+        public static EmployAndPosition CurrentlySelectedEmploy = null;
+        public static Position CurrentlySelectedPosition = null;
         public static ListBox CurrentlySelectedListRef = null;
         public static TaskAndEmploy CurrentlySelectedTask = null;
 
@@ -55,6 +59,22 @@ namespace AgileBoardView
 
             foreach (var c in columns)
                 Board.Columns.Add(c.columnId, c);
+        }
+        
+        public static void GetPositions()
+        {
+            var positions = BoardDB.GetPositions();
+
+            foreach (var p in positions)
+                Board.PositionsList.Add(p);
+        }
+
+        public static void GetEmployeesAndPositions()
+        {
+            var positions = BoardDB.GetEmployeesAndPosition();
+
+            foreach (var p in positions)
+                if (p.employ.employId != 0) Board.EmployAndPositionList.Add(p);
         }
 
         public static void RestoreFromDB()

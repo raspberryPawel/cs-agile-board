@@ -48,6 +48,8 @@ namespace AgileBoardView
                 Board.CurrentlySelectedTask.task.employId = assignee.employId;
                 Board.CurrentlySelectedTask.task.Estimation = Board.GetKeyForValue(cbEstimation.Text, Board.Estimates).estimateId;
 
+                Board.CurrentlySelectedTask.employ = assignee;
+
                 Column newColumn = Board.GetKeyForValue(cbColumn.Text, Board.Columns);
                 Board.CurrentlySelectedTask.employ = assignee;
 
@@ -55,9 +57,10 @@ namespace AgileBoardView
                 if (Board.CurrentlySelectedColumn != newColumn)
                     result = Board.MoveSelectedTaskToAnotherColumn(newColumn);
 
+                MainBoardPage boardPage = new MainBoardPage();
 
-                if (result < 0 && BoardDB.GetDB().SaveChanges() == 1) this.NavigationService.GoBack();
-                else this.NavigationService.GoBack();
+                if (result < 0 && BoardDB.GetDB().SaveChanges() == 1) this.NavigationService.Navigate(boardPage);
+                else this.NavigationService.Navigate(boardPage); ;
             }
             catch (InvalidOperationException err)
             {

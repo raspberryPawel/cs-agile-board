@@ -21,6 +21,7 @@
             <Button x:Name="RemoveSelectedButton" Height="25" Content="Usuń zaznaczone zadanie" Margin="13,63,587,12" Background="#FF251F1F" Foreground="White" FontSize="14" FontWeight="Bold" FontFamily="Century Gothic" Click="RemoveSelectedButton_Click" />
             <Button x:Name="EditSelectedButton" Height="25" Content="Edytuj zaznaczone zadanie" Margin="220,63,350,12" Background="#FF251F1F" Foreground="White" FontSize="14" FontWeight="Bold" FontFamily="Century Gothic" Click="EditSelectedButton_Click" />
             <Button x:Name="EmployButton" Height="25" Content="Zarządzaj Pracownikami" Margin="556,65,14,10" Background="#FF251F1F" Foreground="White" FontSize="14" FontWeight="Bold" FontFamily="Century Gothic" Click="EmployButton_Click" />
+            <Button x:Name="PositionsButton" Height="25" Content="Zarządzaj Stanowiskami" Margin="556,22,14,53" Background="#FF251F1F" Foreground="White" FontSize="14" FontWeight="Bold" FontFamily="Century Gothic" Click="PositionsButton_Click" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0">
             <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Margin="0,0,0,40" RenderTransformOrigin="0.546,0.524">

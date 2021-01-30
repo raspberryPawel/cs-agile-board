@@ -60,5 +60,11 @@ namespace AgileBoardView
             EmployeesList employeesList = new EmployeesList();
             this.NavigationService.Navigate(employeesList);
         }
+
+        private void PositionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            PositionsList PositionsList = new PositionsList();
+            this.NavigationService.Navigate(PositionsList);
+        }
     }
 }

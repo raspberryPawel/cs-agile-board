@@ -15,6 +15,7 @@ namespace AgileBoardView
         public virtual DbSet<Column> Columns { get; set; }
         public virtual DbSet<Employ> Employees { get; set; }
         public virtual DbSet<Estimate> Estimates { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
