@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 namespace AgileBoardView
@@ -12,10 +10,29 @@ namespace AgileBoardView
         public AgileBoardDB() { }
         public AgileBoardDB(DbContextOptions<AgileBoardDB> options) {}
 
+        ///<summary>
+        ///   returns Tasks column
+        ///</summary>
         public virtual DbSet<Task> Tasks { get; set; }
+
+        ///<summary>
+        ///   returns Columns column
+        ///</summary>
         public virtual DbSet<Column> Columns { get; set; }
+
+        ///<summary>
+        ///   returns Employees column
+        ///</summary>
         public virtual DbSet<Employ> Employees { get; set; }
+
+        ///<summary>
+        ///   returns Estimates column
+        ///</summary>
         public virtual DbSet<Estimate> Estimates { get; set; }
+
+        ///<summary>
+        ///   returns Positions column
+        ///</summary>
         public virtual DbSet<Position> Positions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
