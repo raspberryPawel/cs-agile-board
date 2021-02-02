@@ -173,7 +173,7 @@ namespace AgileBoardView {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AgileBoardView;component/pages/edittaskpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AgileBoardView;V1.0.0.0;component/pages/edittaskpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\pages\EditTaskPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

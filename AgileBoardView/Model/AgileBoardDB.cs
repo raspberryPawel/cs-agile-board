@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -21,7 +22,10 @@ namespace AgileBoardView
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite("Filename=AgileBoard.db");
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+                string newPath = Path.GetFullPath(Path.Combine(path, @"..\..\..\\model\AgileBoard.db"));
+
+                optionsBuilder.UseSqlite($"Filename={newPath}");
             }
         }
 
