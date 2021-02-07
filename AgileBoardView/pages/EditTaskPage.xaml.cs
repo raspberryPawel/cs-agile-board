@@ -33,7 +33,8 @@ namespace AgileBoardView
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            try {
+            try
+            {
                 string name = txtName.Text;
                 string description = txtDescription.Text;
 

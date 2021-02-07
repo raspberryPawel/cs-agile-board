@@ -10,6 +10,13 @@ namespace AgileBoardView
     [Index(nameof(estimateId), IsUnique = true)]
     public class Estimate : IWithName
     {
+        public Estimate() { }
+        public Estimate(long estimateId, string name)
+        {
+            this.estimateId = estimateId;
+            this.Name = name;
+        }
+
         [Key]
         [Column("estimateId")]
         public long estimateId { get; set; }

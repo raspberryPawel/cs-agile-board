@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 
 namespace AgileBoardView
 {
@@ -17,7 +17,7 @@ namespace AgileBoardView
         [Required]
         [Column(TypeName = "STRING")]
         public string Name { get; set; }
-        
+
         [Column(TypeName = "STRING")]
         public string Description { get; set; }
         public long Estimation { get; set; }

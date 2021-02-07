@@ -194,7 +194,7 @@ namespace AgileBoardView
             var positions = BoardDB.GetPositions();
 
             foreach (var p in positions)
-                Board.PositionsList.Add(p);
+                if (p.positionId != 0) Board.PositionsList.Add(p);
         }
 
         ///<summary>

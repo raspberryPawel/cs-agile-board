@@ -40,6 +40,7 @@ C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\bin\Debug\net5.0-windows\r
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\bin\Debug\net5.0-windows\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\bin\Debug\net5.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\bin\Debug\net5.0-windows\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\AgileBoardView.csprojAssemblyReference.cache
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\MainWindow.baml
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\MainWindow.g.cs
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\pages\AddNewEmploy.g.cs
@@ -74,4 +75,5 @@ C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\A
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\ref\AgileBoardView.dll
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\AgileBoardView.pdb
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\AgileBoardView.genruntimeconfig.cache
-C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\AgileBoardView.csprojAssemblyReference.cache
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\bin\Debug\net5.0-windows\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\bin\Debug\net5.0-windows\Microsoft.VisualStudio.TestPlatform.TestFramework.dll

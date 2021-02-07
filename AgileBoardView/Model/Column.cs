@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
@@ -9,7 +9,7 @@ namespace AgileBoardView
 {
     [Table("Columns")]
     [Index(nameof(columnId), IsUnique = true)]
-    public partial class Column: IWithName
+    public partial class Column : IWithName
     {
         [Key]
         [Column("columnId")]

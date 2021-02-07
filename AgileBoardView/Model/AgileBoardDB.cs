@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.IO;
-using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 namespace AgileBoardView
@@ -8,7 +8,7 @@ namespace AgileBoardView
     public partial class AgileBoardDB : DbContext
     {
         public AgileBoardDB() { }
-        public AgileBoardDB(DbContextOptions<AgileBoardDB> options) {}
+        public AgileBoardDB(DbContextOptions<AgileBoardDB> options) { }
 
         ///<summary>
         ///   returns Tasks column

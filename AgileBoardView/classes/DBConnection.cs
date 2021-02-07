@@ -20,7 +20,8 @@ namespace AgileBoardView
         ///        </code>
         ///      </example>
         ///    </summary>
-        public static AgileBoardDB GetDB() {
+        public static AgileBoardDB GetDB()
+        {
             BoardDB.CheckDBConnection();
 
             return BoardDB.db;
@@ -39,7 +40,7 @@ namespace AgileBoardView
         {
             var tasks = BoardDB.GetTasks();
             var employees = BoardDB.GetEmployees();
-            
+
             return tasks
                 .Where(t => t.columnId == columnId)
                 .Join(employees, task => task.employId, employ => employ.employId,
@@ -62,7 +63,7 @@ namespace AgileBoardView
             return employees
                 .Join(positions, employ => employ.positionId, position => position.positionId,
                         (e, p) => new EmployAndPosition(e, p));
-                
+
         }
 
         ///   <summary>

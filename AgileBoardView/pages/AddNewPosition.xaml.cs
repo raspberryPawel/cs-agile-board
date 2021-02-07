@@ -29,7 +29,8 @@ namespace AgileBoardView
                     Board.PositionsList.Add(position);
                     this.NavigationService.GoBack();
                 }
-                else {
+                else
+                {
                     lblError.Content = "Błąd dodawania";
                 }
             }

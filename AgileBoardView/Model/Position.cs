@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
@@ -19,7 +19,8 @@ namespace AgileBoardView
         [Column(TypeName = "STRING")]
         public string Name { get; set; }
 
-        public Position(string name) {
+        public Position(string name)
+        {
             Name = name;
         }
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "c8mgb84pNaYj9jDtPc8DEhuHjSrto7IA+liiQS7YBjhZtnC/Y7RUKK91fjDkM0dzPRpobwCzjajY1dzpKQ44XQ==",
+  "dgSpecHash": "YNM/XSSoEA3opGrNM3hETI9KBgTIZTJWfWs/q0ZNiYxJVl0C1XGl+i8RrbT1LbQ0Trtvqe/oNbowKQ55kRVb+A==",
   "success": true,
   "projectFilePath": "C:\\Users\\nieza\\source\\repos\\AgileBoard\\AgileBoardView\\AgileBoardView.csproj",
   "expectedPackageFiles": [
@@ -32,7 +32,9 @@
     "C:\\Users\\nieza\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\nieza\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\nieza\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",
-    "C:\\Users\\nieza\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+    "C:\\Users\\nieza\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\nieza\\.nuget\\packages\\system.text.encodings.web\\5.0.0\\system.text.encodings.web.5.0.0.nupkg.sha512",
+    "C:\\Users\\nieza\\.nuget\\packages\\system.text.json\\5.0.0\\system.text.json.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

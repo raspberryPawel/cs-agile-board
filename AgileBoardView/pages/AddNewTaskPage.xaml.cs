@@ -33,7 +33,7 @@ namespace AgileBoardView
             {
                 string name = txtName.Text;
                 string description = txtDescription.Text;
-               
+
                 long employId = BoardDB.GetEmployees().ToList().First(employ => employ.ToString() == cbAssignee.Text).employId;
                 long openColumnId = Board.GetKeyForValue("Open", Board.Columns).columnId;
 
@@ -45,7 +45,8 @@ namespace AgileBoardView
 
                 this.NavigationService.GoBack();
             }
-            catch (InvalidOperationException err){
+            catch (InvalidOperationException err)
+            {
                 lblError.Content = $"{err.Message}";
             }
         }

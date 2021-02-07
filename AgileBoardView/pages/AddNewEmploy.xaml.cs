@@ -38,7 +38,8 @@ namespace AgileBoardView
 
                     this.NavigationService.GoBack();
                 }
-                else {
+                else
+                {
                     lblError.Content = "Błąd dodawania";
                 }
             }

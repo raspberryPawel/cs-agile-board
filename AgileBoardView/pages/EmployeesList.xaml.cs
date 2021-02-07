@@ -33,7 +33,8 @@ namespace AgileBoardView
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             int index = ListOfEmployees.SelectedIndex;
-            if (index >= 0) {
+            if (index >= 0)
+            {
                 Board.CurrentlySelectedEmploy = Board.EmployAndPositionList[index];
 
                 EditEmployPage EditEmployPage = new EditEmployPage();
@@ -48,10 +49,12 @@ namespace AgileBoardView
             {
                 var employ = Board.EmployAndPositionList[index].employ;
 
-                if (employ.employId != 0) {
+                if (employ.employId != 0)
+                {
                     BoardDB.GetEmployees().Remove(employ);
 
-                    if (BoardDB.GetDB().SaveChanges() == 1) {
+                    if (BoardDB.GetDB().SaveChanges() == 1)
+                    {
                         Board.EmployAndPositionList.RemoveAt(index);
                         Board.ClearListsAndRestoreFromDB();
                     }

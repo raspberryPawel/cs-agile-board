@@ -31,7 +31,8 @@ namespace AgileBoardView
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             int index = ListOfPositions.SelectedIndex;
-            if (index >= 0) {
+            if (index >= 0)
+            {
                 Board.CurrentlySelectedPosition = Board.PositionsList[index];
                 Board.GetEmployeesAndPositions();
                 EditPositionPage EditPositionPage = new EditPositionPage();
@@ -46,7 +47,8 @@ namespace AgileBoardView
             {
                 var position = Board.PositionsList[index];
 
-                if (position.positionId != 0) {
+                if (position.positionId != 0)
+                {
                     BoardDB.GetPositions().Remove(position);
 
                     if (BoardDB.GetDB().SaveChanges() == 1)
