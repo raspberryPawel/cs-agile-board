@@ -147,7 +147,7 @@ namespace AgileBoardView
         }
 
 
-        ///<summary>
+        ///     <summary>
         ///      Get Estimates from DB and add them to Board.Estimates Dictionary
         ///      <example>
         ///        <code>

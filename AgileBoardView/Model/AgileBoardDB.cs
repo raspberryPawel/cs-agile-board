@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Diagnostics;
 using System.IO;
 
 #nullable disable
@@ -41,7 +42,8 @@ namespace AgileBoardView
             {
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 string newPath = Path.GetFullPath(Path.Combine(path, @"..\..\..\\model\AgileBoard.db"));
-
+                Debug.WriteLine("SIEMA SIEMA ===> ");
+                Debug.WriteLine(newPath);
                 optionsBuilder.UseSqlite($"Filename={newPath}");
             }
         }

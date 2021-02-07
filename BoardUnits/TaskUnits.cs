@@ -9,11 +9,10 @@ namespace BoardUnits
     {
         private static void AddEstimates()
         {
-            if (Board.Estimates.Count == 0) {
-                Board.Estimates.Add(1, new Estimate(1, "Low"));
-                Board.Estimates.Add(2, new Estimate(2, "Medium"));
-                Board.Estimates.Add(3, new Estimate(3, "High"));
-            }
+            Board.Estimates.Clear();
+            Board.Estimates.Add(1, new Estimate(1, "Low"));
+            Board.Estimates.Add(2, new Estimate(2, "Medium"));
+            Board.Estimates.Add(3, new Estimate(3, "High"));
         }
 
         [TestMethod]
