@@ -10,14 +10,8 @@ namespace AgileBoardView
     {
         public EmployeesList()
         {
-            if (Board.EmployeesList.Count == 0) {
-                foreach (var employ in BoardDB.GetEmployees())
-                {
-                    if(employ.employId != 0)
-                        Board.EmployeesList.Add(employ);
-                }
-            }
-            
+            Board.GetEmployeesAndPositions();
+
             InitializeComponent();
 
             Board.ListOfEmployeesRef = ListOfEmployees;
@@ -52,14 +46,14 @@ namespace AgileBoardView
             int index = ListOfEmployees.SelectedIndex;
             if (index >= 0)
             {
-                var employ = Board.EmployeesList[index];
+                var employ = Board.EmployAndPositionList[index].employ;
 
                 if (employ.employId != 0) {
                     BoardDB.GetEmployees().Remove(employ);
 
                     if (BoardDB.GetDB().SaveChanges() == 1) {
-                        Board.EmployeesList.RemoveAt(index);
                         Board.EmployAndPositionList.RemoveAt(index);
+                        Board.ClearListsAndRestoreFromDB();
                     }
                 }
                 else lblError.Content = "Nie można usunąć";

@@ -21,7 +21,7 @@ namespace AgileBoardView
             foreach (var p in Board.PositionsList)
                 cbPosition.Items.Add(p);
 
-            cbPosition.Text = Board.PositionsList.FirstOrDefault(p => p.positionId == Board.CurrentlySelectedEmploy.employ.positionId).ToString();
+            cbPosition.Text = Board.CurrentlySelectedEmploy.Position;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e) => this.NavigationService.GoBack();
@@ -42,6 +42,7 @@ namespace AgileBoardView
                 if (BoardDB.GetDB().SaveChanges() == 1)
                 {
                     CollectionViewSource.GetDefaultView(Board.EmployAndPositionList).Refresh();
+                    Board.ClearListsAndRestoreFromDB();
                     this.NavigationService.GoBack();
                 }
                 else lblError.Content = "Błąd edycji";

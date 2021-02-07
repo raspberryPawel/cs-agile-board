@@ -26,9 +26,7 @@ namespace AgileBoardView
 
             cbEstimation.Text = Board.CurrentlySelectedTask.Estimation;
             cbColumn.Text = Board.Columns[Board.CurrentlySelectedTask.task.columnId].ToString();
-
-            Employ taskEmploy = BoardDB.GetEmployees().ToList().First(employ => employ.employId == Board.CurrentlySelectedTask.task.employId);
-            cbAssignee.Text = $"{taskEmploy.Name} {taskEmploy.Surname}";
+            cbAssignee.Text = Board.CurrentlySelectedTask.Assign;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e) => this.NavigationService.GoBack();
@@ -45,22 +43,20 @@ namespace AgileBoardView
                 Board.CurrentlySelectedTask.task.Name = name;
                 Board.CurrentlySelectedTask.task.Description = description;
                 Board.CurrentlySelectedTask.task.TaskEndDate = endDate;
+                Board.CurrentlySelectedTask.task.LastModifyDate = DateTime.Now;
                 Board.CurrentlySelectedTask.task.employId = assignee.employId;
                 Board.CurrentlySelectedTask.task.Estimation = Board.GetKeyForValue(cbEstimation.Text, Board.Estimates).estimateId;
 
                 Board.CurrentlySelectedTask.employ = assignee;
 
                 Column newColumn = Board.GetKeyForValue(cbColumn.Text, Board.Columns);
-                Board.CurrentlySelectedTask.employ = assignee;
+                Board.CurrentlySelectedTask.task.columnId = newColumn.columnId;
 
-                int result = -1;
-                if (Board.CurrentlySelectedColumn != newColumn)
-                    result = Board.MoveSelectedTaskToAnotherColumn(newColumn);
+                BoardDB.GetDB().SaveChanges();
+                Board.ClearListsAndRestoreFromDB();
 
                 MainBoardPage boardPage = new MainBoardPage();
-
-                if (result < 0 && BoardDB.GetDB().SaveChanges() == 1) this.NavigationService.Navigate(boardPage);
-                else this.NavigationService.Navigate(boardPage); ;
+                this.NavigationService.Navigate(boardPage);
             }
             catch (InvalidOperationException err)
             {

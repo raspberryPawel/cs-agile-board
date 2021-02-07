@@ -18,6 +18,7 @@ namespace AgileBoardView
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddNewPosition AddNewPosition = new AddNewPosition();
+            Board.GetEmployeesAndPositions();
             this.NavigationService.Navigate(AddNewPosition);
         }
 
@@ -32,7 +33,7 @@ namespace AgileBoardView
             int index = ListOfPositions.SelectedIndex;
             if (index >= 0) {
                 Board.CurrentlySelectedPosition = Board.PositionsList[index];
-
+                Board.GetEmployeesAndPositions();
                 EditPositionPage EditPositionPage = new EditPositionPage();
                 this.NavigationService.Navigate(EditPositionPage);
             }
@@ -49,7 +50,9 @@ namespace AgileBoardView
                     BoardDB.GetPositions().Remove(position);
 
                     if (BoardDB.GetDB().SaveChanges() == 1)
+                    {
                         Board.PositionsList.RemoveAt(index);
+                    }
                 }
                 else lblError.Content = "Nie można usunąć";
             }

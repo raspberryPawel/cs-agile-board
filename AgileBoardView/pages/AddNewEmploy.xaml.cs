@@ -34,7 +34,6 @@ namespace AgileBoardView
                 BoardDB.GetEmployees().Add(employ);
                 if (BoardDB.GetDB().SaveChanges() == 1)
                 {
-                    Board.EmployeesList.Add(employ);
                     Board.EmployAndPositionList.Add(new EmployAndPosition(employ, position));
 
                     this.NavigationService.GoBack();

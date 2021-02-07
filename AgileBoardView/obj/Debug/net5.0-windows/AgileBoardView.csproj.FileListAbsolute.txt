@@ -74,3 +74,4 @@ C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\A
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\ref\AgileBoardView.dll
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\AgileBoardView.pdb
 C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\AgileBoardView.genruntimeconfig.cache
+C:\Users\nieza\source\repos\AgileBoard\AgileBoardView\obj\Debug\net5.0-windows\AgileBoardView.csprojAssemblyReference.cache

@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace AgileBoardView
+﻿namespace AgileBoardView
 {
     ///   <summary>
     ///      Keeps information about Employ and his POsition in company

@@ -39,11 +39,6 @@ namespace AgileBoardView
         public static ListBox ListOfPositionsRef = null;
 
         /// <summary>
-        /// EmployeesList keeps Employees
-        /// </summary>
-        public static ObservableCollection<Employ> EmployeesList = new ObservableCollection<Employ>();
-
-        /// <summary>
         /// PositionsList keeps Positions
         /// </summary>
         public static ObservableCollection<Position> PositionsList = new ObservableCollection<Position>();
@@ -67,6 +62,23 @@ namespace AgileBoardView
         /// TestsTasksList keeps test tasks
         /// </summary>
         public static ObservableCollection<TaskAndEmploy> TestsTasksList = new ObservableCollection<TaskAndEmploy>();
+
+        ///   <summary>
+        ///      Clears all list and gets new data from DB
+        ///      <example>
+        ///        <code>
+        ///             Board.ClearListsAndRestoreFromDB();
+        ///        </code>
+        ///      </example>
+        ///    </summary>
+        public static void ClearListsAndRestoreFromDB()
+        {
+            Board.OpenTasksList.Clear();
+            Board.CodingTasksList.Clear();
+            Board.TestsTasksList.Clear();
+            Board.ResolveTasksList.Clear();
+            Board.RestoreFromDB();
+        }
 
         /// <summary>
         /// ResolveTasksList keeps resolve tasks
@@ -178,6 +190,7 @@ namespace AgileBoardView
 
         public static void GetPositions()
         {
+            Board.PositionsList.Clear();
             var positions = BoardDB.GetPositions();
 
             foreach (var p in positions)
@@ -194,6 +207,7 @@ namespace AgileBoardView
         ///    </summary>
         public static void GetEmployeesAndPositions()
         {
+            Board.EmployAndPositionList.Clear();
             var positions = BoardDB.GetEmployeesAndPosition();
 
             foreach (var p in positions)
@@ -333,30 +347,6 @@ namespace AgileBoardView
         }
 
         ///   <summary>
-        ///      Move selected task to another column
-        ///      <example>
-        ///        <code>
-        ///             Board.MoveSelectedTaskToAnotherColumn(newColumn);
-        ///        </code>
-        ///      </example>
-        ///    </summary>
-        public static int MoveSelectedTaskToAnotherColumn(Column column)
-        {
-            TaskAndEmploy task = Board.GetListBasedOnSelectedColumn()[Board.CurrentlySelectedIndex];
-
-            task.task.columnId = column.columnId;
-            int res = BoardDB.SaveChanges();
-
-            if (res == 1)
-            {
-                Board.GetListBasedOnColumn(column).Add(task);
-                Board.RemoveSelectedTask();
-            }
-
-            return res;
-        }
-
-        ///   <summary>
         ///      removes selected task
         ///      <example>
         ///        <code>
@@ -367,7 +357,9 @@ namespace AgileBoardView
         public static void RemoveSelectedTask()
         {
             BoardDB.GetTasks().Remove(Board.CurrentlySelectedTask.task);
-            Board.GetListBasedOnSelectedColumn().RemoveAt(Board.CurrentlySelectedIndex);
+
+            if (BoardDB.SaveChanges() == 1)
+                Board.GetListBasedOnSelectedColumn().RemoveAt(Board.CurrentlySelectedIndex);
         }
 
         ///   <summary>
