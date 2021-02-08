@@ -8,5 +8,11 @@ Program WPF pozwalający na zarządzanie i przepływem zadań.
 - .Net Core 3.1
 - WPF
 
+#### 3. Zrzuty z apliakcji:
+
+![Main board page](./images/board.png)
+![Task edit](./images/edit.png)
+![Employees Positions](./images/positions.png)
+![Employees](./images/employees.png)
 
 
